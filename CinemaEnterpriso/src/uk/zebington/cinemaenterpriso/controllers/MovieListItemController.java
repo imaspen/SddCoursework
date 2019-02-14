@@ -31,7 +31,7 @@ public class MovieListItemController implements TakesData<Movie> {
     public void showDetails() {
         try {
             Stage stage = (Stage) this.detailsButton.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("boundaries/movieDetails.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../boundaries/movieDetails.fxml"));
             Parent movieDetailsPage = loader.load();
             loader.<MovieDetailsController>getController().initData(this.movie);
             stage.setScene(new Scene(movieDetailsPage));
