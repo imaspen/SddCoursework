@@ -13,7 +13,7 @@ public class CinemaEnterpriso extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         System.setProperty("prism.allowhidpi", "true");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("boundaries/MovieDetails.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("boundaries/movieDetails.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
