@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import uk.zebington.cinemaenterpriso.entities.Movie;
 
-public class MovieDetailsController {
+public class MovieDetailsController implements TakesData<Movie> {
     private Movie movie;
 
     public Label movieTitle;
