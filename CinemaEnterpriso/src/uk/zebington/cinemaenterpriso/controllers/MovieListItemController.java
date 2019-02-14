@@ -33,7 +33,9 @@ public class MovieListItemController implements TakesData<Movie> {
             Stage stage = (Stage) this.detailsButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../boundaries/movieDetails.fxml"));
             Parent movieDetailsPage = loader.load();
-            loader.<MovieDetailsController>getController().initData(this.movie);
+            MovieDetailsController controller = loader.<MovieDetailsController>getController();
+            controller.initData(this.movie);
+            controller.setPreviousScene(this.detailsButton.getScene());
             stage.setScene(new Scene(movieDetailsPage));
         } catch (IOException e) {
             e.printStackTrace();
