@@ -13,17 +13,18 @@ import java.util.Arrays;
 /**
  * @author Aspen Thompson
  */
-public class MovieListController implements TakesData<ArrayList<Movie>> {
+public class MovieListController extends AbstractController implements HasTitle {
     private ArrayList<Movie> movies;
     public VBox movieContainer;
 
-    @Override
-    public void initData(ArrayList<Movie> movies) {
+    public MovieListController(ArrayList<Movie> movies) {
+        super("movieList");
         this.movies = movies;
         addMoviesToList();
     }
 
-    public void initData(Movie... movies) {
+    public MovieListController(Movie... movies) {
+        super("movieList");
         this.movies = new ArrayList<>();
         this.movies.addAll(Arrays.asList(movies));
         addMoviesToList();
@@ -36,15 +37,11 @@ public class MovieListController implements TakesData<ArrayList<Movie>> {
     }
 
     private Parent makeListItem(Movie movie) {
-        Parent movieListItem;
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../boundaries/movieListItem.fxml"));
-            movieListItem = loader.load();
-            loader.<MovieListItemController>getController().initData(movie);
-        } catch (IOException e) {
-            e.printStackTrace();
-            movieListItem = new Label("Error");
-        }
-        return movieListItem;
+        return (new MovieListItemController(movie)).getPage();
+    }
+
+    @Override
+    public String getTitle() {
+        return "Movies";
     }
 }
