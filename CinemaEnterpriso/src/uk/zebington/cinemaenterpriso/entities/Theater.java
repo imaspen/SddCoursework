@@ -30,4 +30,14 @@ public class Theater {
     public void setSeats(Integer seats) {
         this.seats = seats;
     }
+
+    public Integer getTicketsAvailable() {
+        int sold = 0;
+        for (Ticket ticket : Ticket.SOLD_TICKETS) {
+            if (ticket.getTheater() == this) {
+                sold++;
+            }
+        }
+        return this.getSeats() - sold;
+    }
 }
