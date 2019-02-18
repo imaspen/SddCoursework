@@ -25,7 +25,7 @@ public class TheaterListItemController extends AbstractController {
     public Spinner<Integer> ticketsAmountSelector;
 
     TheaterListItemController(Theater theater) {
-        super("movieListItem");
+        super("theaterListItem");
         this.theater = theater;
         Movie movie = this.theater.getShowingMovie();
         this.movieName.setText(movie.getTitle());

@@ -18,13 +18,13 @@ public class TheaterListController extends AbstractController implements HasTitl
     public VBox movieContainer;
 
     public TheaterListController(ArrayList<Theater> theaters) {
-        super("movieList");
+        super("theaterList");
         this.theaters = theaters;
         addMoviesToList();
     }
 
     public TheaterListController(Theater... theaters) {
-        super("movieList");
+        super("theaterList");
         this.theaters = new ArrayList<>();
         this.theaters.addAll(Arrays.asList(theaters));
         addMoviesToList();
