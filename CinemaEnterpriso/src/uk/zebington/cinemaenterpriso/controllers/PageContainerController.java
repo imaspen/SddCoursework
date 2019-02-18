@@ -1,6 +1,7 @@
 package uk.zebington.cinemaenterpriso.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -13,9 +14,11 @@ import java.util.Deque;
 public class PageContainerController extends AbstractController {
     public static final PageContainerController MAIN_PAGE = new PageContainerController();
 
-    public BorderPane pageContainer;
+    @FXML
     public Button backButton;
+    @FXML
     public Label pageTitle;
+    @FXML
     public StackPane pageContent;
 
     private Deque<AbstractController> history = new ArrayDeque<>();
@@ -33,6 +36,7 @@ public class PageContainerController extends AbstractController {
         loadPage(controller);
     }
 
+    @FXML
     public void loadPreviousPage(ActionEvent actionEvent) {
         if (!history.isEmpty()) {
             loadPage(history.removeFirst());
