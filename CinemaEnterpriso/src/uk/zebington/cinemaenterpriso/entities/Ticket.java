@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by u1862679 on 18/02/2019.
  */
-public class Ticket {
+public class Ticket implements Purchasable {
     public static final ArrayList<Ticket> SOLD_TICKETS = new ArrayList<Ticket>() {
         {
             add(new Ticket(Theater.OA4_01));
@@ -38,5 +38,15 @@ public class Ticket {
 
     public void setTheater(Theater theater) {
         this.theater = theater;
+    }
+
+    @Override
+    public Price getPrice() {
+        return theater.getPrice();
+    }
+
+    @Override
+    public String getName() {
+        return theater.getShowingMovie().getTitle() + " Ticket";
     }
 }
