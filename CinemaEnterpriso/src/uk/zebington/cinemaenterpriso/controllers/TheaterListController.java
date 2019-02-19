@@ -37,7 +37,7 @@ public class TheaterListController extends AbstractController implements HasTitl
     }
 
     private Parent makeListItem(Theater theater) {
-        return (new TheaterListItemController(theater)).getPage();
+        return (new TheaterListItemController(theater)).getParent();
     }
 
     @Override

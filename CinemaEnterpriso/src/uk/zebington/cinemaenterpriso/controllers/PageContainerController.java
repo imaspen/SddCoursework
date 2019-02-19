@@ -6,8 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import java.util.ArrayDeque;
@@ -57,7 +55,7 @@ public class PageContainerController extends AbstractController {
 
     private void loadPage(AbstractController controller) {
         pageContent.getChildren().clear();
-        pageContent.getChildren().add(controller.getPage());
+        pageContent.getChildren().add(controller.getParent());
         if (controller instanceof HasTitle) {
             pageTitle.setText(((HasTitle) controller).getTitle());
         } else {
