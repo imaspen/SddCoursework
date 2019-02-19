@@ -44,7 +44,7 @@ public class PageContainerController extends Controller {
     }
 
     @FXML
-    public void loadPreviousPage(ActionEvent actionEvent) {
+    public void loadPreviousPage() {
         if (!history.isEmpty()) {
             loadPage(history.removeFirst());
             if (history.isEmpty()) {

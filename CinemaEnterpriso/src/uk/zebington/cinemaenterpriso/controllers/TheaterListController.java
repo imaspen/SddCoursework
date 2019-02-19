@@ -15,24 +15,24 @@ public class TheaterListController extends PageController {
     private ArrayList<Theater> theaters;
 
     @FXML
-    public VBox movieContainer;
+    public VBox theaterContainer;
 
     public TheaterListController(ArrayList<Theater> theaters) {
         super("theaterList");
         this.theaters = theaters;
-        addMoviesToList();
+        addTheatersToList();
     }
 
     public TheaterListController(Theater... theaters) {
         super("theaterList");
         this.theaters = new ArrayList<>();
         this.theaters.addAll(Arrays.asList(theaters));
-        addMoviesToList();
+        addTheatersToList();
     }
 
-    private void addMoviesToList() {
+    private void addTheatersToList() {
         for (Theater theater : this.theaters) {
-            movieContainer.getChildren().add(makeListItem(theater));
+            theaterContainer.getChildren().add(makeListItem(theater));
         }
     }
 
