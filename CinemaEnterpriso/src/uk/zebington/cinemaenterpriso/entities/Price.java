@@ -19,7 +19,8 @@ public class Price {
         this.amount = amount;
     }
 
-    public String getAmountAsString() {
+    @Override
+    public String toString() {
         return String.format("%01d.%02d £", amount / 100, amount % 100);
     }
 }

@@ -29,6 +29,7 @@ public class Theater {
     public Theater(Movie showingMovie, Integer seats, Price price) {
         this.showingMovie = showingMovie;
         this.seats = seats;
+        this.price = price;
     }
 
     public Movie getShowingMovie() {

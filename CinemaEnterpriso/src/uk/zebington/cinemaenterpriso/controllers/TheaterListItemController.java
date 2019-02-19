@@ -6,6 +6,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import uk.zebington.cinemaenterpriso.entities.Movie;
 import uk.zebington.cinemaenterpriso.entities.Theater;
+import uk.zebington.cinemaenterpriso.entities.Ticket;
 
 /**
  * @author Aspen Thompson
@@ -43,6 +44,6 @@ public class TheaterListItemController extends Controller {
 
     @FXML
     public void bookTickets() {
-        //TODO: Implement this!
+        PageContainerController.MAIN_PAGE.loadNewPage(new ViewBasketController(new Ticket(theater)));
     }
 }

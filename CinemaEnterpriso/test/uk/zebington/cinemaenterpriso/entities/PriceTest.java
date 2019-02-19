@@ -25,11 +25,11 @@ class PriceTest {
     }
 
     @Test
-    void getAmountAsString() {
-        Assertions.assertEquals("1.80 £", price180.getAmountAsString(), "Default behaviour");
-        Assertions.assertEquals("1.08 £", price108.getAmountAsString(), "Penny padding");
-        Assertions.assertEquals("100.08 £", price10008.getAmountAsString(), "Larger number");
-        Assertions.assertEquals("0.08 £", price8.getAmountAsString(), "Pound padding");
+    void testToString() {
+        Assertions.assertEquals("1.80 £", price180.toString(), "Default behaviour");
+        Assertions.assertEquals("1.08 £", price108.toString(), "Penny padding");
+        Assertions.assertEquals("100.08 £", price10008.toString(), "Larger number");
+        Assertions.assertEquals("0.08 £", price8.toString(), "Pound padding");
     }
 
     @Test
