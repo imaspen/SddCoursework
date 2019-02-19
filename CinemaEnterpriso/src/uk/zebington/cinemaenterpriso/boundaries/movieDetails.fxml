@@ -19,7 +19,7 @@
     <right>
         <ImageView fx:id="movieRating" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
             <image>
-                <Image url="/U.png" />
+                <Image url="@../../../../../res/U.png" />
             </image>
             <BorderPane.margin>
                 <Insets left="20.0" />
