@@ -10,7 +10,7 @@ import uk.zebington.cinemaenterpriso.entities.Theater;
 /**
  * @author Aspen Thompson
  */
-public class TheaterListItemController extends AbstractController {
+public class TheaterListItemController extends Controller {
     private Theater theater;
 
     @FXML

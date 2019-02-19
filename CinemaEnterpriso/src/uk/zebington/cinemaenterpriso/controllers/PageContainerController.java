@@ -11,7 +11,7 @@ import javafx.scene.layout.StackPane;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class PageContainerController extends AbstractController {
+public class PageContainerController extends Controller {
     public static final PageContainerController MAIN_PAGE = new PageContainerController();
 
     @FXML
@@ -25,8 +25,8 @@ public class PageContainerController extends AbstractController {
     @FXML
     public ScrollPane scrollingPane;
 
-    private Deque<AbstractController> history = new ArrayDeque<>();
-    private AbstractController active;
+    private Deque<PageController> history = new ArrayDeque<>();
+    private PageController active;
 
     public PageContainerController() {
         super("pageContainer");
@@ -35,7 +35,7 @@ public class PageContainerController extends AbstractController {
         );
     }
 
-    public void loadNewPage(AbstractController controller) {
+    public void loadNewPage(PageController controller) {
         if (active != null) {
             backButton.setDisable(false);
             history.addFirst(active);
@@ -53,14 +53,10 @@ public class PageContainerController extends AbstractController {
         }
     }
 
-    private void loadPage(AbstractController controller) {
+    private void loadPage(PageController controller) {
         pageContent.getChildren().clear();
         pageContent.getChildren().add(controller.getParent());
-        if (controller instanceof HasTitle) {
-            pageTitle.setText(((HasTitle) controller).getTitle());
-        } else {
-            pageTitle.setText("");
-        }
+        pageTitle.setText(controller.getTitle());
         active = controller;
     }
 }

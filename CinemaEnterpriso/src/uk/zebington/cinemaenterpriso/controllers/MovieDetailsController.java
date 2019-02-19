@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import uk.zebington.cinemaenterpriso.entities.Movie;
 
-public class MovieDetailsController extends AbstractController implements HasTitle {
+public class MovieDetailsController extends PageController {
     private Movie movie;
 
     @FXML

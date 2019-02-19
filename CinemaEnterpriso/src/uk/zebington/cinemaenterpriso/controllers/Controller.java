@@ -5,10 +5,10 @@ import javafx.scene.Parent;
 
 import java.io.IOException;
 
-public abstract class AbstractController {
+public abstract class Controller {
     private Parent parent;
 
-    public AbstractController(String fxmlName) {
+    public Controller(String fxmlName) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../boundaries/" + fxmlName + ".fxml"));
             loader.setController(this);

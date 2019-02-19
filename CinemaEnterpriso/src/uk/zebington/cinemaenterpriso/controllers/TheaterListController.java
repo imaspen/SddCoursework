@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * @author Aspen Thompson
  */
-public class TheaterListController extends AbstractController implements HasTitle {
+public class TheaterListController extends PageController {
     private ArrayList<Theater> theaters;
 
     @FXML
