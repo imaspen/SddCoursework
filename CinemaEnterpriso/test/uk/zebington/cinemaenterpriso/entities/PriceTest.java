@@ -1,8 +1,8 @@
 package uk.zebington.cinemaenterpriso.entities;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 class PriceTest {
@@ -33,14 +33,6 @@ class PriceTest {
     }
 
     @Test
-    void getAmount() {
-        Assertions.assertEquals(180, price180.getAmount());
-        Assertions.assertEquals(108, price108.getAmount());
-        Assertions.assertEquals(10008, price10008.getAmount());
-        Assertions.assertEquals(8, price8.getAmount());
-    }
-
-    @Test
     void setAmount() {
         try {
             Price price = new Price(100);
@@ -62,7 +54,7 @@ class PriceTest {
     }
 
     @Test
-    void addAmount() {
+    void addPrice() {
         price8.addPrice(price108);
         Assertions.assertEquals(116, price8.getAmount());
         price180.addPrice(price10008);
