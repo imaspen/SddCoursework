@@ -18,7 +18,7 @@ public class MovieDetailsController extends PageController {
         super("movieDetails");
         this.movie = movie;
         this.movieDescription.setText(movie.getDescription());
-        this.movieRating.setImage(new Image("/" + movie.getAgeRating() + ".png"));
+        this.movieRating.setImage(new Image("/" + movie.getAgeRating().toString() + ".png"));
     }
 
     @Override
