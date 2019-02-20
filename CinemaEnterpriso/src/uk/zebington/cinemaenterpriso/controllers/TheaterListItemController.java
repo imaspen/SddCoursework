@@ -5,8 +5,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import uk.zebington.cinemaenterpriso.entities.Movie;
+import uk.zebington.cinemaenterpriso.entities.Purchasable;
 import uk.zebington.cinemaenterpriso.entities.Theater;
 import uk.zebington.cinemaenterpriso.entities.Ticket;
+
+import java.util.ArrayList;
 
 /**
  * @author Aspen Thompson
@@ -34,7 +37,7 @@ public class TheaterListItemController extends Controller {
         this.movieRating.setText(movie.getAgeRating());
         Integer ticketsAvailable = theater.getTicketsAvailable();
         this.ticketsAvailable.setText("" + ticketsAvailable);
-        ((SpinnerValueFactory.IntegerSpinnerValueFactory)this.ticketsAmountSelector.getValueFactory()).setMax(ticketsAvailable);
+        ((SpinnerValueFactory.IntegerSpinnerValueFactory)this.ticketsAmountSelector.getValueFactory()).setMax(Math.min(ticketsAvailable, 10));
     }
 
     @FXML
@@ -44,6 +47,10 @@ public class TheaterListItemController extends Controller {
 
     @FXML
     public void bookTickets() {
-        PageContainerController.MAIN_PAGE.loadNewPage(new ViewBasketController(new Ticket(theater)));
+        ArrayList<Purchasable> basket = new ArrayList<>();
+        for (int i = 0; i < ticketsAmountSelector.getValue(); i++) {
+            basket.add(new Ticket(theater));
+        }
+        PageContainerController.MAIN_PAGE.loadNewPage(new ViewBasketController(basket));
     }
 }

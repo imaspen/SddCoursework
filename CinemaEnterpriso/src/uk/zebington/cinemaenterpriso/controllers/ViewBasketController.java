@@ -1,20 +1,21 @@
 package uk.zebington.cinemaenterpriso.controllers;
 
+import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
-import uk.zebington.cinemaenterpriso.entities.Ticket;
 
 import java.util.ArrayList;
 
 public class ViewBasketController extends PageController {
+    @FXML
     public VBox basketItems;
 
     private ArrayList<Purchasable> basket;
 
-    public ViewBasketController(Ticket ticket) {
+    public ViewBasketController(ArrayList<Purchasable> basket) {
         super("viewBasket");
-        basket = new ArrayList<>();
-        addBasketItem(ticket);
+        this.basket = new ArrayList<>();
+        basket.forEach(this::addBasketItem);
     }
 
     private void addBasketItem(Purchasable purchasable) {
