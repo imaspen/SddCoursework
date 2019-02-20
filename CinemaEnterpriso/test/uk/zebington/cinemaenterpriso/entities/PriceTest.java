@@ -25,7 +25,7 @@ class PriceTest {
     }
 
     @Test
-    void testToString() {
+    void asString() {
         Assertions.assertEquals("1.80 £", price180.toString(), "Default behaviour");
         Assertions.assertEquals("1.08 £", price108.toString(), "Penny padding");
         Assertions.assertEquals("100.08 £", price10008.toString(), "Larger number");
@@ -59,5 +59,13 @@ class PriceTest {
         } catch (NegativePriceException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void addAmount() {
+        price8.addPrice(price108);
+        Assertions.assertEquals(116, price8.getAmount());
+        price180.addPrice(price10008);
+        Assertions.assertEquals(10188, price180.getAmount());
     }
 }
