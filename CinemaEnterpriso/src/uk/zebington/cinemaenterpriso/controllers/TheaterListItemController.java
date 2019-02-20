@@ -34,7 +34,7 @@ public class TheaterListItemController extends Controller {
         Movie movie = this.theater.getShowingMovie();
         this.movieName.setText(movie.getTitle());
         this.movieGenre.setText(movie.getGenre());
-        this.movieRating.setText(movie.getAgeRating());
+        this.movieRating.setText(movie.getAgeRating().toString());
         Integer ticketsAvailable = theater.getTicketsAvailable();
         this.ticketsAvailable.setText("" + ticketsAvailable);
         ((SpinnerValueFactory.IntegerSpinnerValueFactory)this.ticketsAmountSelector.getValueFactory()).setMax(Math.min(ticketsAvailable, 10));
