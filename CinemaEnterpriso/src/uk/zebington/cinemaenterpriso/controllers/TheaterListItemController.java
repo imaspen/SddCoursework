@@ -42,7 +42,7 @@ public class TheaterListItemController extends Controller {
 
     @FXML
     public void showDetails() {
-        PageContainerController.MAIN_PAGE.loadNewPage(new MovieDetailsController(theater.getShowingMovie()));
+        PageContainerController.getInstance().loadNewPage(new MovieDetailsController(theater.getShowingMovie()));
     }
 
     @FXML
@@ -51,6 +51,6 @@ public class TheaterListItemController extends Controller {
         for (int i = 0; i < ticketsAmountSelector.getValue(); i++) {
             basket.add(new Ticket(theater));
         }
-        PageContainerController.MAIN_PAGE.loadNewPage(new ViewBasketController(basket));
+        PageContainerController.getInstance().loadNewPage(new ViewBasketController(basket));
     }
 }

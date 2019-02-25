@@ -18,9 +18,9 @@ public class CinemaEnterpriso extends Application {
         System.setProperty("prism.allowhidpi", "true");
         primaryStage.setTitle("Cinema Enterpiso");
         addIcons(primaryStage);
-        primaryStage.setScene(new Scene(PageContainerController.MAIN_PAGE.getParent()));
+        primaryStage.setScene(new Scene(PageContainerController.getInstance().getParent()));
         primaryStage.setMaximized(true);
-        PageContainerController.MAIN_PAGE.loadNewPage(new TheaterListController(Theater.OA4_01, Theater.SJG_38));
+        PageContainerController.getInstance().loadNewPage(new TheaterListController(Theater.OA4_01, Theater.SJG_38));
         primaryStage.show();
     }
 

@@ -12,7 +12,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class PageContainerController extends Controller {
-    public static final PageContainerController MAIN_PAGE = new PageContainerController();
+    private static PageContainerController instance = new PageContainerController();
 
     @FXML
     public Button backButton;
@@ -28,11 +28,15 @@ public class PageContainerController extends Controller {
     private Deque<PageController> history = new ArrayDeque<>();
     private PageController active;
 
-    public PageContainerController() {
+    private PageContainerController() {
         super("pageContainer");
         centeringPane.minWidthProperty().bind(Bindings.createDoubleBinding(
                 () -> scrollingPane.getViewportBounds().getWidth(), scrollingPane.viewportBoundsProperty())
         );
+    }
+
+    public static PageContainerController getInstance() {
+        return instance;
     }
 
     public void loadNewPage(PageController controller) {
