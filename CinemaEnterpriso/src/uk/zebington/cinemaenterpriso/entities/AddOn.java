@@ -1,12 +1,19 @@
 package uk.zebington.cinemaenterpriso.entities;
 
-public abstract class AddOn implements Purchasable {
+import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
+
+public class AddOn implements Purchasable {
     private String name;
     private Price price;
 
     public AddOn(String name, Price price) {
         this.name = name;
         this.price = price;
+    }
+
+    public AddOn(String name, int price) throws NegativePriceException {
+        this.name = name;
+        this.price = new Price(price);
     }
 
     @Override
