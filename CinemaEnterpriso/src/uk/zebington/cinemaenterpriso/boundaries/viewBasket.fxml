@@ -28,6 +28,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#addDrink" text="Add Drink" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addSnack" text="Add Snack" />
+            <Button mnemonicParsing="false" onAction="#checkout" text="Checkout" />
          </children>
       </HBox>
    </children>

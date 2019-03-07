@@ -37,12 +37,21 @@ public class ViewBasketController extends PageController {
 
     @FXML
     public void addDrink() {
-        PageContainerController.getInstance().loadNewPage(new BuyAddOnController(Catalogue.getInstance().getDrinks(), new AddOnConsumer()));
+        PageContainerController.getInstance().loadNewPage(
+                new BuyAddOnController(Catalogue.getInstance().getDrinks(), new AddOnConsumer())
+        );
     }
 
     @FXML
     public void addSnack() {
-        PageContainerController.getInstance().loadNewPage(new BuyAddOnController(Catalogue.getInstance().getSnacks(), new AddOnConsumer()));
+        PageContainerController.getInstance().loadNewPage(
+                new BuyAddOnController(Catalogue.getInstance().getSnacks(), new AddOnConsumer())
+        );
+    }
+
+    @FXML
+    public void checkout() {
+        PageContainerController.getInstance().loadNewPage(new CheckoutController());
     }
 
     @Override
