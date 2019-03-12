@@ -17,10 +17,12 @@ public class CheckoutController extends PageController {
     public Pane checkoutPane;
 
     private CardDetailsController cardDetails;
+    private CashGivenController cashGiven;
 
     public CheckoutController() {
         super("checkout");
         cardDetails = new CardDetailsController();
+        cashGiven = new CashGivenController();
 
         ToggleGroup toggleGroup = new ToggleGroup();
         cashRadio.setToggleGroup(toggleGroup);
@@ -42,6 +44,7 @@ public class CheckoutController extends PageController {
 
     private void cashSelected() {
         checkoutPane.getChildren().clear();
+        checkoutPane.getChildren().add(cashGiven.getParent());
     }
 
     private void cardSelected() {
