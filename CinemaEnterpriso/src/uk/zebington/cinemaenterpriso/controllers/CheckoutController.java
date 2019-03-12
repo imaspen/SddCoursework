@@ -27,7 +27,6 @@ public class CheckoutController extends PageController {
         ToggleGroup toggleGroup = new ToggleGroup();
         cashRadio.setToggleGroup(toggleGroup);
         cardRadio.setToggleGroup(toggleGroup);
-        cashRadio.setSelected(true);
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == cashRadio) {
                 cashSelected();
@@ -35,6 +34,7 @@ public class CheckoutController extends PageController {
                 cardSelected();
             }
         });
+        cashRadio.setSelected(true);
     }
 
     @Override
