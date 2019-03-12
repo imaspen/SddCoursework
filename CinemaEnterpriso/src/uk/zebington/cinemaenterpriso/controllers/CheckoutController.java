@@ -3,6 +3,7 @@ package uk.zebington.cinemaenterpriso.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.Pane;
 
 /**
  * @author Aspen Thompson
@@ -12,9 +13,15 @@ public class CheckoutController extends PageController {
     public RadioButton cashRadio;
     @FXML
     public RadioButton cardRadio;
+    @FXML
+    public Pane checkoutPane;
+
+    private CardDetailsController cardDetails;
 
     public CheckoutController() {
         super("checkout");
+        cardDetails = new CardDetailsController();
+
         ToggleGroup toggleGroup = new ToggleGroup();
         cashRadio.setToggleGroup(toggleGroup);
         cardRadio.setToggleGroup(toggleGroup);
@@ -34,10 +41,11 @@ public class CheckoutController extends PageController {
     }
 
     private void cashSelected() {
-        //TODO
+        checkoutPane.getChildren().clear();
     }
 
     private void cardSelected() {
-        //TODO
+        checkoutPane.getChildren().clear();
+        checkoutPane.getChildren().add(cardDetails.getParent());
     }
 }
