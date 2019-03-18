@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import uk.zebington.cinemaenterpriso.entities.Purchasable;
+
+import java.util.ArrayList;
 
 /**
  * @author Aspen Thompson
@@ -16,11 +19,14 @@ public class CheckoutController extends PageController {
     @FXML
     public Pane checkoutPane;
 
+    private ArrayList<Purchasable> basket;
     private CardDetailsController cardDetails;
     private CashGivenController cashGiven;
 
-    public CheckoutController() {
+    public CheckoutController(ArrayList<Purchasable> basket) {
         super("checkout");
+        this.basket = basket;
+
         cardDetails = new CardDetailsController();
         cashGiven = new CashGivenController();
 
@@ -50,5 +56,10 @@ public class CheckoutController extends PageController {
     private void cardSelected() {
         checkoutPane.getChildren().clear();
         checkoutPane.getChildren().add(cardDetails.getParent());
+    }
+
+    @FXML
+    public void confirmPurchase() {
+        PageContainerController.getInstance().loadNewPage(new ReceiptController(basket));
     }
 }
