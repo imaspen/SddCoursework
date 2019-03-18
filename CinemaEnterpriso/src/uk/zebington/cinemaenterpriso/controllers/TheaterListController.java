@@ -40,6 +40,11 @@ public class TheaterListController extends PageController {
         return (new TheaterListItemController(theater)).getParent();
     }
 
+    @FXML
+    public void loadAdminPanel() {
+        PageContainerController.getInstance().loadNewPage(new AdminPanelController());
+    }
+
     @Override
     public String getTitle() {
         return "Movies";
