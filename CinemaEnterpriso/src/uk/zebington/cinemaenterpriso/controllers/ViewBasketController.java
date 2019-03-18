@@ -51,7 +51,7 @@ public class ViewBasketController extends PageController {
 
     @FXML
     public void checkout() {
-        PageContainerController.getInstance().loadNewPage(new CheckoutController());
+        PageContainerController.getInstance().loadNewPage(new CheckoutController(basket));
     }
 
     @Override
