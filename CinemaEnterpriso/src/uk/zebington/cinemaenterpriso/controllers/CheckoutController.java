@@ -5,6 +5,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
+import uk.zebington.cinemaenterpriso.entities.Ticket;
+import uk.zebington.cinemaenterpriso.entities.TicketList;
 
 import java.util.ArrayList;
 
@@ -60,6 +62,8 @@ public class CheckoutController extends PageController {
 
     @FXML
     public void confirmPurchase() {
+        TicketList.getInstance().add((Ticket) basket.get(0));
         PageContainerController.getInstance().loadNewPage(new ReceiptController(basket));
+        PageContainerController.getInstance().resetHistory();
     }
 }

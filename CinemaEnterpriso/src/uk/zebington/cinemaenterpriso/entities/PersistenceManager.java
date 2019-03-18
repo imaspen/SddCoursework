@@ -5,8 +5,8 @@ import java.io.*;
 /**
  * @author Aspen Thompson
  */
-class PersistenceManager {
-    static <T> T loadInstance(String path) {
+public class PersistenceManager {
+    public static <T> T loadInstance(String path) {
         try {
             FileInputStream fileIn = new FileInputStream(path);
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -20,7 +20,7 @@ class PersistenceManager {
         }
     }
 
-    static void writeInstance(Serializable instance, String path) {
+    public static void writeInstance(Serializable instance, String path) {
         try {
             FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
