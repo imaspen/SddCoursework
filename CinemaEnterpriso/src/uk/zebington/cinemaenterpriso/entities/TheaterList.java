@@ -1,36 +1,9 @@
 package uk.zebington.cinemaenterpriso.entities;
 
-import java.io.*;
 import java.util.ArrayList;
 
 public class TheaterList extends ArrayList<Theater> {
     private static TheaterList ourInstance;
-
-    public static TheaterList getInstance() {
-        if (ourInstance == null) {
-            try {
-                FileInputStream fileIn = new FileInputStream("TheaterList.ser");
-                ObjectInputStream in = new ObjectInputStream(fileIn);
-                ourInstance = (TheaterList) in.readObject();
-                in.close();
-                fileIn.close();
-            } catch (IOException e) {
-                ourInstance = new TheaterList();
-                try {
-                    FileOutputStream fileOut = new FileOutputStream("TheaterList.ser");
-                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                    out.writeObject(ourInstance);
-                    out.close();
-                    fileOut.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        return ourInstance;
-    }
 
     private TheaterList() {
         super();
@@ -40,5 +13,16 @@ public class TheaterList extends ArrayList<Theater> {
 //        } catch (NegativePriceException e) {
 //            e.printStackTrace();
 //        }
+    }
+
+    public static TheaterList getInstance() {
+        if (ourInstance == null) {
+            ourInstance = PersistenceManager.loadInstance("TheaterList.ser");
+            if (ourInstance == null) {
+                ourInstance = new TheaterList();
+                PersistenceManager.writeInstance(ourInstance, "TheaterList.ser");
+            }
+        }
+        return ourInstance;
     }
 }
