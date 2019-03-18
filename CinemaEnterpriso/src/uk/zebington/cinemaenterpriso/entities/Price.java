@@ -2,7 +2,9 @@ package uk.zebington.cinemaenterpriso.entities;
 
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
-public class Price {
+import java.io.Serializable;
+
+public class Price implements Serializable {
     private Integer amount;
 
     public Price() {

@@ -7,9 +7,25 @@ import javafx.stage.Stage;
 import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
 import uk.zebington.cinemaenterpriso.controllers.TheaterListController;
 import uk.zebington.cinemaenterpriso.entities.Theater;
+import uk.zebington.cinemaenterpriso.entities.TheaterList;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class CinemaEnterpriso extends Application {
     public static void main(String[] args) {
+//        try {
+//            FileOutputStream fileOut =
+//            new FileOutputStream("test.ser");
+//            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//            out.writeObject(TheaterList.getInstance());
+//            out.close();
+//            fileOut.close();
+//            System.out.printf("Serialized data is saved in /tmp/employee.ser");
+//        } catch (IOException i) {
+//            i.printStackTrace();
+//        }
         launch(args);
     }
 
@@ -20,7 +36,7 @@ public class CinemaEnterpriso extends Application {
         addIcons(primaryStage);
         primaryStage.setScene(new Scene(PageContainerController.getInstance().getParent()));
         primaryStage.setMaximized(true);
-        PageContainerController.getInstance().loadNewPage(new TheaterListController(Theater.OA4_01, Theater.SJG_38));
+        PageContainerController.getInstance().loadNewPage(new TheaterListController(TheaterList.getInstance()));
         primaryStage.show();
     }
 

@@ -1,9 +1,11 @@
 package uk.zebington.cinemaenterpriso.entities;
 
+import java.io.Serializable;
+
 /**
  * Created by u1862679 on 18/02/2019.
  */
-public class Theater {
+public class Theater implements Serializable {
     private Movie showingMovie;
     private Integer seats;
     private Price price;

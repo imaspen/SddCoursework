@@ -1,9 +1,11 @@
 package uk.zebington.cinemaenterpriso.entities;
 
+import java.io.Serializable;
+
 /**
  * Created by u1862679 on 18/02/2019.
  */
-public class Ticket implements Purchasable {
+public class Ticket implements Purchasable, Serializable {
     private Theater theater;
 
     public Ticket(Theater theater) {
