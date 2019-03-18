@@ -47,6 +47,10 @@ public class PageContainerController extends Controller {
         loadPage(controller);
     }
 
+    public void resetHistory() {
+        history.clear();
+    }
+
     @FXML
     public void loadPreviousPage() {
         if (!history.isEmpty()) {
