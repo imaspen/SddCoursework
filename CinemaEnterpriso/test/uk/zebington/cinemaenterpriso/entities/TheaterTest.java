@@ -16,8 +16,8 @@ class TheaterTest {
         try {
             Price price1 = new Price(100);
             Price price2 = new Price(500);
-            theater1 = new Theater(movie1,100, price1);
-            theater2 = new Theater(movie2, 75, price2);
+            theater1 = new Theater("SJG/38", movie1,100, price1);
+            theater2 = new Theater("BLG/11", movie2, 75, price2);
         } catch (NegativePriceException e) {
             e.printStackTrace();
         }
@@ -26,10 +26,10 @@ class TheaterTest {
     @Test
     void getTicketsAvailable() {
         for (int i = 0; i < 10; i++) {
-            Ticket.SOLD_TICKETS.add(new Ticket(theater1));
+            TicketList.getInstance().add(new Ticket(theater1));
         }
         for (int i = 0; i < 15; i++) {
-            Ticket.SOLD_TICKETS.add(new Ticket(theater2));
+            TicketList.getInstance().add(new Ticket(theater2));
         }
         Assertions.assertEquals(theater1.getSeats() - 10, theater1.getTicketsAvailable());
         Assertions.assertEquals(theater2.getSeats() - 15, theater2.getTicketsAvailable());

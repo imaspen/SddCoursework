@@ -23,8 +23,8 @@ class TicketTest {
         } catch (NegativePriceException e) {
             e.printStackTrace();
         }
-        ticket1 = new Ticket(new Theater(movie1, 100, price1));
-        ticket2 = new Ticket(new Theater(movie2, 75, price2));
+        ticket1 = new Ticket(new Theater("SJG/38", movie1, 100, price1));
+        ticket2 = new Ticket(new Theater("BLG/11", movie2, 75, price2));
     }
 
     @Test

@@ -3,6 +3,7 @@ package uk.zebington.cinemaenterpriso.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
+import uk.zebington.cinemaenterpriso.controllers.admin.AdminPanelController;
 import uk.zebington.cinemaenterpriso.entities.Theater;
 
 import java.util.ArrayList;
