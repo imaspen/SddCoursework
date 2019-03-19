@@ -83,6 +83,16 @@ public class AdminPanelController extends PageController {
         }
     }
 
+    @FXML
+    public void addTheater() {
+        //TODO
+    }
+
+    @FXML
+    public void removeTheater() {
+        //TODO
+    }
+
     @Override
     public String getTitle() {
         return "Admin Panel";
