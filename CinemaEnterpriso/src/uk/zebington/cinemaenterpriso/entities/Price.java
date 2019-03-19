@@ -1,9 +1,12 @@
 package uk.zebington.cinemaenterpriso.entities;
 
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
+import uk.zebington.cinemaenterpriso.exceptions.PriceFormatException;
 
 import java.io.Serializable;
 import java.text.NumberFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Price implements Serializable {
     private Integer amount;
@@ -37,6 +40,15 @@ public class Price implements Serializable {
     @Override
     public String toString() {
         return (NumberFormat.getCurrencyInstance()).format(amount / 100 + (double) (amount % 100) / 100);
-//        return String.format("%01d.%02d £", amount / 100, amount % 100);
+    }
+
+    public static Price fromString(String price) throws PriceFormatException, NegativePriceException {
+        Pattern pricePattern = Pattern.compile("^(?:£)?(?<pounds>[0-9]+)?(?:\\.(?<pence>[0-9]{1,2}))?$");
+        Matcher priceMatcher = pricePattern.matcher(price);
+        if (priceMatcher.matches()) {
+            return new Price((Integer.valueOf(priceMatcher.group("pounds")) * 100) + Integer.valueOf(priceMatcher.group("pence")));
+        } else {
+            throw new PriceFormatException();
+        }
     }
 }

@@ -4,10 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
-import uk.zebington.cinemaenterpriso.entities.Movie;
-import uk.zebington.cinemaenterpriso.entities.Theater;
-import uk.zebington.cinemaenterpriso.entities.TheaterList;
+import uk.zebington.cinemaenterpriso.entities.*;
 
 /**
  * @author Aspen Thompson
@@ -29,10 +28,15 @@ public class AdminPanelController extends PageController {
     public TextField movieGenre;
     @FXML
     public TextArea movieDescription;
+    @FXML
+    public HBox editButtons;
+
+    private TheaterList theaterList;
 
     public AdminPanelController() {
         super("admin/adminPanel", 2);
-        theaters.getItems().setAll(TheaterList.getInstance());
+        theaterList = (TheaterList) TheaterList.getInstance().clone();
+        theaters.getItems().setAll(theaterList);
         theaters.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> updateFields(newValue));
     }
 
@@ -45,6 +49,37 @@ public class AdminPanelController extends PageController {
         movieRating.setText(movie.getAgeRating().toString());
         movieGenre.setText(movie.getGenre());
         movieDescription.setText(movie.getDescription());
+    }
+
+    @FXML
+    public void resetChanges() {
+        updateFields(theaters.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    public void commitChanges() {
+        Theater theater = theaters.getSelectionModel().getSelectedItem();
+        try {
+            Integer seats = Integer.valueOf(theaterSeats.getText());
+            Price price = Price.fromString(theaterPrice.getText());
+            AgeRating ageRating = AgeRating.fromString(movieRating.getText());
+            theater.setId(theaterId.getText());
+            theater.setSeats(seats);
+            theater.setPrice(price);
+            Movie movie = theater.getShowingMovie();
+            movie.setTitle(movieTitle.getText());
+            movie.setAgeRating(ageRating);
+            movie.setGenre(movieGenre.getText());
+            movie.setDescription(movieDescription.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void saveChanges() {
+        PersistenceManager.writeInstance(theaterList, "TheaterList.ser");
+        TheaterList.loadInstance();
     }
 
     @Override

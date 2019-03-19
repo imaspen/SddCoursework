@@ -18,4 +18,11 @@ public enum AgeRating {
     public String toString() {
         return this.title;
     }
+
+    public static AgeRating fromString(String string) {
+        for (AgeRating ageRating : AgeRating.values())  {
+            if (ageRating.toString().equals(string)) return ageRating;
+        }
+        return null;
+    }
 }
