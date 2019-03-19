@@ -76,6 +76,7 @@ public class AdminPanelController extends PageController {
             movie.setDescription(movieDescription.getText());
             PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
             toUpdate.forEach(ticket -> ticket.setTheater(theater));
+            PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
         } catch (Exception e) {
             e.printStackTrace();
         }

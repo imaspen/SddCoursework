@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import uk.zebington.cinemaenterpriso.entities.PersistenceManager;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
 import uk.zebington.cinemaenterpriso.entities.Ticket;
 import uk.zebington.cinemaenterpriso.entities.TicketList;
@@ -62,7 +63,12 @@ public class CheckoutController extends PageController {
 
     @FXML
     public void confirmPurchase() {
-        TicketList.getInstance().add((Ticket) basket.get(0));
+        for (Purchasable purchasable : basket) {
+            if (purchasable instanceof Ticket) {
+                TicketList.getInstance().add((Ticket) purchasable);
+            }
+        }
+        PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
         PageContainerController.getInstance().loadNewPage(new ReceiptController(basket));
         PageContainerController.getInstance().resetHistory();
     }

@@ -31,11 +31,6 @@ public class CinemaEnterpriso extends Application {
         primaryStage.show();
     }
 
-    @Override
-    public void stop() {
-        PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
-    }
-
     private void addIcons(Stage stage) {
         String[] resolutions = {"16", "32", "48", "64", "96", "128", "256"};
         for (String resolution : resolutions) {
