@@ -8,6 +8,8 @@ import javafx.scene.layout.HBox;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.entities.*;
 
+import java.util.ArrayList;
+
 /**
  * @author Aspen Thompson
  */
@@ -57,6 +59,10 @@ public class AdminPanelController extends PageController {
     public void commitChanges() {
         Theater theater = theaters.getSelectionModel().getSelectedItem();
         try {
+            ArrayList<Ticket> toUpdate = new ArrayList<>();
+            for (Ticket ticket : TicketList.getInstance()) {
+                if (ticket.getTheater().equals(theater)) toUpdate.add(ticket);
+            }
             Integer seats = Integer.valueOf(theaterSeats.getText());
             Price price = Price.fromString(theaterPrice.getText());
             AgeRating ageRating = AgeRating.fromString(movieRating.getText());
@@ -69,6 +75,7 @@ public class AdminPanelController extends PageController {
             movie.setGenre(movieGenre.getText());
             movie.setDescription(movieDescription.getText());
             PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
+            toUpdate.forEach(ticket -> ticket.setTheater(theater));
         } catch (Exception e) {
             e.printStackTrace();
         }

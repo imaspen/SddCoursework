@@ -42,6 +42,12 @@ public class Price implements Serializable {
         return (NumberFormat.getCurrencyInstance()).format(amount / 100 + (double) (amount % 100) / 100);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Price)) return false;
+        return amount.equals(((Price) obj).getAmount());
+    }
+
     public static Price fromString(String price) throws PriceFormatException, NegativePriceException {
         Pattern pricePattern = Pattern.compile("^(?:£)?(?<pounds>[0-9]+)?(?:\\.(?<pence>[0-9]{1,2}))?$");
         Matcher priceMatcher = pricePattern.matcher(price);

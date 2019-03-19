@@ -51,4 +51,12 @@ public class Movie implements Serializable {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Movie)) return false;
+        Movie movie = (Movie) obj;
+        return title.equals(movie.getTitle()) && ageRating.equals(movie.getAgeRating())
+                && description.equals(movie.getDescription()) && genre.equals(movie.getGenre());
+    }
 }

@@ -63,7 +63,9 @@ public class Theater implements Serializable {
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Theater)) return false;
-        return id.equals(((Theater)obj).id);
+        Theater other = (Theater) obj;
+        return id.equals(other.getId()) && showingMovie.equals(other.getShowingMovie())
+                && seats.equals(other.getSeats()) && price.equals(other.getPrice());
     }
 
     @Override

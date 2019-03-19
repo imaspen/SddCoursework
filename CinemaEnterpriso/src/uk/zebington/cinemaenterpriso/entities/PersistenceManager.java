@@ -14,7 +14,10 @@ public class PersistenceManager {
             in.close();
             fileIn.close();
             return instance;
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
+            System.out.println(path + " not found.");
+            return null;
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
             return null;
         }
@@ -27,6 +30,7 @@ public class PersistenceManager {
             out.writeObject(instance);
             out.close();
             fileOut.close();
+            System.out.println("Writing to " + path);
         } catch (IOException e1) {
             e1.printStackTrace();
         }
