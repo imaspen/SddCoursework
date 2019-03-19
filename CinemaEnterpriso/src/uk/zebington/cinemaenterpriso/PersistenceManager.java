@@ -1,4 +1,4 @@
-package uk.zebington.cinemaenterpriso.entities;
+package uk.zebington.cinemaenterpriso;
 
 import java.io.*;
 

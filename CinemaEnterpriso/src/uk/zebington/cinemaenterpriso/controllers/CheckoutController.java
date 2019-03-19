@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
-import uk.zebington.cinemaenterpriso.entities.PersistenceManager;
+import uk.zebington.cinemaenterpriso.PersistenceManager;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
 import uk.zebington.cinemaenterpriso.entities.Ticket;
 import uk.zebington.cinemaenterpriso.entities.TicketList;

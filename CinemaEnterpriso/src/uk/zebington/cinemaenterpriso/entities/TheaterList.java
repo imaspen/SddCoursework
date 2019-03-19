@@ -1,5 +1,6 @@
 package uk.zebington.cinemaenterpriso.entities;
 
+import uk.zebington.cinemaenterpriso.PersistenceManager;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 import java.util.ArrayList;

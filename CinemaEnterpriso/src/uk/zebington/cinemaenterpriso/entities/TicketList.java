@@ -1,5 +1,7 @@
 package uk.zebington.cinemaenterpriso.entities;
 
+import uk.zebington.cinemaenterpriso.PersistenceManager;
+
 import java.util.ArrayList;
 
 public class TicketList extends ArrayList<Ticket> {

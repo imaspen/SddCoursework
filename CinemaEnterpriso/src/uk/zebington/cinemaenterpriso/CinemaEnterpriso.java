@@ -6,14 +6,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
 import uk.zebington.cinemaenterpriso.controllers.TheaterListController;
-import uk.zebington.cinemaenterpriso.entities.PersistenceManager;
-import uk.zebington.cinemaenterpriso.entities.Theater;
 import uk.zebington.cinemaenterpriso.entities.TheaterList;
-import uk.zebington.cinemaenterpriso.entities.TicketList;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 public class CinemaEnterpriso extends Application {
     public static void main(String[] args) {
