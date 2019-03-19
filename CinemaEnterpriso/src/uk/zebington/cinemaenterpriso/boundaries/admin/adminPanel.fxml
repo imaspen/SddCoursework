@@ -15,10 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_RIGHT" spacing="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxWidth="-Infinity" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <items>
             <ListView fx:id="theaters" prefHeight="200.0" prefWidth="200.0" />
             <VBox spacing="10.0">
@@ -141,7 +140,7 @@
                   <HBox fx:id="editButtons" alignment="CENTER_RIGHT" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#resetChanges" text="Reset" />
-                        <Button mnemonicParsing="false" onAction="#commitChanges" text="Commit" />
+                        <Button mnemonicParsing="false" onAction="#commitChanges" text="Save" />
                      </children>
                   </HBox>
                </children>
@@ -151,6 +150,5 @@
             </VBox>
          </items>
       </SplitPane>
-      <Button mnemonicParsing="false" text="Save Changes" />
    </children>
 </VBox>

@@ -31,12 +31,9 @@ public class AdminPanelController extends PageController {
     @FXML
     public HBox editButtons;
 
-    private TheaterList theaterList;
-
     public AdminPanelController() {
         super("admin/adminPanel", 2);
-        theaterList = (TheaterList) TheaterList.getInstance().clone();
-        theaters.getItems().setAll(theaterList);
+        theaters.getItems().setAll(TheaterList.getInstance());
         theaters.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> updateFields(newValue));
     }
 
@@ -71,15 +68,10 @@ public class AdminPanelController extends PageController {
             movie.setAgeRating(ageRating);
             movie.setGenre(movieGenre.getText());
             movie.setDescription(movieDescription.getText());
+            PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    public void saveChanges() {
-        PersistenceManager.writeInstance(theaterList, "TheaterList.ser");
-        TheaterList.loadInstance();
     }
 
     @Override
