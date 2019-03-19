@@ -3,6 +3,7 @@ package uk.zebington.cinemaenterpriso.entities;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 
 public class Price implements Serializable {
     private Integer amount;
@@ -35,6 +36,7 @@ public class Price implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%01d.%02d £", amount / 100, amount % 100);
+        return (NumberFormat.getCurrencyInstance()).format(amount / 100 + (double) (amount % 100) / 100);
+//        return String.format("%01d.%02d £", amount / 100, amount % 100);
     }
 }

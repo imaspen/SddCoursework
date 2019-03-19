@@ -65,4 +65,9 @@ public class Theater implements Serializable {
         if (!(obj instanceof Theater)) return false;
         return id.equals(((Theater)obj).id);
     }
+
+    @Override
+    public String toString() {
+        return this.getId() + " - " + this.getShowingMovie().getTitle();
+    }
 }
