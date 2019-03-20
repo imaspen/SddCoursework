@@ -1,7 +1,6 @@
 * {
     -fx-text-fill: #c2c2c2;
     -fx-font-family: Verdana, Arial, sans-serif;
-    /*-fx-font-size: 12px;*/
 }
 
 .header {
@@ -15,9 +14,14 @@
 .button:hover {
     -fx-background-color: radial-gradient(center 0 0, radius 200%, #3d3d3f, #5f5f63)
 }
-.button:focused, .spinner:focused {
-    -fx-border-color: pink;
+
+.button:focused, .spinner:focused, .text-field:focused {
+    -fx-border-color: #b3868d;
 }
+.list-view:focused {
+    -fx-background-color: #b3868d;
+}
+
 .spinner-confirm:focused, .spinner:focused {
     -fx-border-width: 1px;
 }
@@ -35,21 +39,32 @@
 }
 
 .spinner {
-    -fx-border-radius: 3px 0 0 3px;
     -fx-border-color: #0c0c0d;
+    -fx-background-color: none;
+    -fx-border-radius: 3px;
+}
+.spinner.combo {
+    -fx-border-radius: 3px 0 0 3px;
     -fx-border-width: 1px 0 1px 1px;
 }
 .spinner .text-field {
     -fx-border-color: none;
-    -fx-background-radius: 0;
+    -fx-background-radius: 3px 0 0 3px;
 }
 .spinner .text-field:hover {
     -fx-cursor: default;
 }
+.spinner .increment-arrow-button {
+    -fx-background-radius: 0 3px 0 0;
+}
+.spinner .decrement-arrow-button-arrow-button {
+    -fx-background-radius: 0 0 3px 0;
+}
 .spinner .increment-arrow-button, .spinner .decrement-arrow-button {
-    -fx-border-radius: 0 0 0 0;
-    -fx-background-radius: 0 0 0 0;
     -fx-background-color: #34343a;
+}
+.spinner.combo .increment-arrow-button, .spinner.combo .decrement-arrow-button {
+    -fx-background-radius: 0;
 }
 .spinner .increment-arrow-button:hover, .spinner .decrement-arrow-button:hover {
     -fx-background-color: #5f5f63;
@@ -81,4 +96,42 @@
     -fx-border-color: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
     -fx-border-style: solid;
     -fx-border-width: 5 0 0 0;
+}
+
+.list-view {
+    -fx-background-color: #0c0c0d;
+    -fx-background-insets: 0;
+}
+.list-view .list-cell {
+    -fx-background-color: #34343a;
+}
+.list-view .list-cell:odd {
+    -fx-background-color: #2f2f35;
+}
+.list-view .list-cell:focused {
+    -fx-background-color: #5f5f63;
+}
+
+.radio-button .radio {
+    -fx-background-color: linear-gradient(to bottom, #34343a, #5f5f63);
+    -fx-border-color: linear-gradient(to top, #34343a, #5f5f63);
+    -fx-border-radius: 130px;
+    -fx-background-insets: 0;
+}
+.radio-button:selected .radio {
+    -fx-background-color: linear-gradient(to bottom, #b3868d, #e6acb6);
+    -fx-border-color: linear-gradient(to top, #b3868d, #e6acb6);
+}
+.radio-button:selected .dot {
+    -fx-background-insets: 0;
+    -fx-background-color: #34343a;
+}
+
+GridPane.highlight {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+ScrollPane:focused {
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
 }

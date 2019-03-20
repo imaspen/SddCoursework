@@ -18,14 +18,20 @@ public class TheaterListController extends PageController {
     @FXML
     public VBox theaterContainer;
 
+    private boolean highlightNext;
+
     public TheaterListController() {
         super("theaterlist/theaterList", 2);
+        highlightNext = false;
         addTheatersToList(TheaterList.getInstance());
     }
 
     private void addTheatersToList(Collection<Theater> theaters) {
         for (Theater theater : theaters) {
-            theaterContainer.getChildren().add(makeListItem(theater));
+            Parent next = makeListItem(theater);
+            if (highlightNext) next.getStyleClass().add("highlight");
+            highlightNext = !highlightNext;
+            theaterContainer.getChildren().add(next);
         }
     }
 
