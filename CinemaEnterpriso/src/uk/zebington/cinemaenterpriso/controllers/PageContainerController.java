@@ -45,6 +45,7 @@ public class PageContainerController extends Controller {
             history.addFirst(active);
         }
         loadPage(controller);
+        active.getParent().getStyleClass().add("page-content");
     }
 
     public void resetHistory() {
