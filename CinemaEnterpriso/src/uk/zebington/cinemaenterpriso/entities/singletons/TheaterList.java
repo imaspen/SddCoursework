@@ -1,6 +1,7 @@
 package uk.zebington.cinemaenterpriso.entities.singletons;
 
 import uk.zebington.cinemaenterpriso.PersistenceManager;
+import uk.zebington.cinemaenterpriso.entities.AgeRating;
 import uk.zebington.cinemaenterpriso.entities.Movie;
 import uk.zebington.cinemaenterpriso.entities.Price;
 import uk.zebington.cinemaenterpriso.entities.Theater;
@@ -13,12 +14,6 @@ public class TheaterList extends ArrayList<Theater> {
 
     private TheaterList() {
         super();
-        try {
-            this.add(new Theater("SJG/03", Movie.THE_MATRIX, 150, new Price(1000)));
-            this.add(new Theater("BLG/11", Movie.PAUL_BLART_2, 200, new Price(50)));
-        } catch (NegativePriceException e) {
-            e.printStackTrace();
-        }
     }
 
     public static TheaterList getInstance() {
