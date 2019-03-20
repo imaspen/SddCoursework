@@ -1,8 +1,10 @@
-package uk.zebington.cinemaenterpriso.controllers;
+package uk.zebington.cinemaenterpriso.controllers.buyaddon;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.GridPane;
+import uk.zebington.cinemaenterpriso.controllers.Controller;
+import uk.zebington.cinemaenterpriso.controllers.viewbasket.ViewBasketItemController;
 import uk.zebington.cinemaenterpriso.entities.AddOn;
 
 public class BuyAddOnItemController extends Controller {
@@ -14,7 +16,7 @@ public class BuyAddOnItemController extends Controller {
     private AddOn addOn;
 
     public BuyAddOnItemController(AddOn addOn) {
-        super("buyAddOnItem");
+        super("buyaddon/buyAddOnItem", 2);
         this.addOn = addOn;
         itemContainer.add(new ViewBasketItemController(addOn).getParent(), 0, 0);
     }

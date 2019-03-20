@@ -1,14 +1,14 @@
-package uk.zebington.cinemaenterpriso.controllers;
+package uk.zebington.cinemaenterpriso.controllers.theaterlist;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
+import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
+import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.controllers.admin.AdminPanelController;
 import uk.zebington.cinemaenterpriso.entities.Theater;
 import uk.zebington.cinemaenterpriso.entities.TheaterList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 /**
@@ -19,7 +19,7 @@ public class TheaterListController extends PageController {
     public VBox theaterContainer;
 
     public TheaterListController() {
-        super("theaterList");
+        super("theaterlist/theaterList", 2);
         addTheatersToList(TheaterList.getInstance());
     }
 

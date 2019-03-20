@@ -1,9 +1,11 @@
-package uk.zebington.cinemaenterpriso.controllers;
+package uk.zebington.cinemaenterpriso.controllers.buyaddon;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
+import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.entities.AddOn;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class BuyAddOnController extends PageController {
     private Consumer<Collection<AddOn>> consumer;
 
     public BuyAddOnController(Collection<AddOn> addOns, Consumer<Collection<AddOn>> consumer) {
-        super("buyAddOn");
+        super("buyaddon/buyAddOn", 2);
         ObservableList<Node> items = itemsContainer.getChildren();
         addOnControllers = new ArrayList<>();
         for (AddOn addOn : addOns) {

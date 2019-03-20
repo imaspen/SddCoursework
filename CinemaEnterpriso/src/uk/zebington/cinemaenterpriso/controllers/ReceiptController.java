@@ -3,10 +3,10 @@ package uk.zebington.cinemaenterpriso.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import uk.zebington.cinemaenterpriso.entities.Catalogue;
+import uk.zebington.cinemaenterpriso.controllers.theaterlist.TheaterListController;
+import uk.zebington.cinemaenterpriso.controllers.viewbasket.ViewBasketItemController;
 import uk.zebington.cinemaenterpriso.entities.Price;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
-import uk.zebington.cinemaenterpriso.entities.TheaterList;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 import java.util.ArrayList;

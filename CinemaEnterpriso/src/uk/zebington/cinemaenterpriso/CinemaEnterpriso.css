@@ -1,0 +1,7 @@
+.root {
+    -fx-background-color: #9fa4c4;
+}
+
+.root > * {
+    -fx-background-color: #b3cdd1;
+}

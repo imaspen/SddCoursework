@@ -1,9 +1,12 @@
-package uk.zebington.cinemaenterpriso.controllers;
+package uk.zebington.cinemaenterpriso.controllers.theaterlist;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import uk.zebington.cinemaenterpriso.controllers.Controller;
+import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
+import uk.zebington.cinemaenterpriso.controllers.viewbasket.ViewBasketController;
 import uk.zebington.cinemaenterpriso.entities.Movie;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
 import uk.zebington.cinemaenterpriso.entities.Theater;
@@ -29,7 +32,7 @@ public class TheaterListItemController extends Controller {
     public Spinner<Integer> ticketsAmountSelector;
 
     TheaterListItemController(Theater theater) {
-        super("theaterListItem");
+        super("theaterlist/theaterListItem", 2);
         this.theater = theater;
         Movie movie = this.theater.getShowingMovie();
         this.movieName.setText(movie.getTitle());
