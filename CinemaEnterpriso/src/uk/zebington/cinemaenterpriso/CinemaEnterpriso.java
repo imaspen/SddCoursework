@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
 import uk.zebington.cinemaenterpriso.controllers.TheaterListController;
-import uk.zebington.cinemaenterpriso.entities.TheaterList;
 
 public class CinemaEnterpriso extends Application {
     public static void main(String[] args) {
@@ -20,7 +19,7 @@ public class CinemaEnterpriso extends Application {
         addIcons(primaryStage);
         primaryStage.setScene(new Scene(PageContainerController.getInstance().getParent()));
         primaryStage.setMaximized(true);
-        PageContainerController.getInstance().loadNewPage(new TheaterListController(TheaterList.getInstance()));
+        PageContainerController.getInstance().loadNewPage(new TheaterListController());
         primaryStage.show();
     }
 

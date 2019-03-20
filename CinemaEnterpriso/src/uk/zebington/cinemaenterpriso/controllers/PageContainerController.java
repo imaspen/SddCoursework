@@ -55,6 +55,7 @@ public class PageContainerController extends Controller {
     public void loadPreviousPage() {
         if (!history.isEmpty()) {
             loadPage(history.removeFirst());
+            active.onBack();
             if (history.isEmpty()) {
                 backButton.setDisable(true);
             }

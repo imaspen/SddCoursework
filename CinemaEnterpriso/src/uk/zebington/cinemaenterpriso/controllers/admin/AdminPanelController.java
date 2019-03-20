@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import uk.zebington.cinemaenterpriso.PersistenceManager;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.entities.*;
+import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 import java.util.ArrayList;
 
@@ -85,12 +86,27 @@ public class AdminPanelController extends PageController {
 
     @FXML
     public void addTheater() {
-        //TODO
+        try {
+            Theater theater = new Theater(
+                    "New Theater",
+                    new Movie("New Movie", AgeRating.U, "", ""),
+                    200,
+                    new Price(0)
+            );
+            TheaterList.getInstance().add(theater);
+            theaters.getItems().add(theater);
+            PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
+        } catch (NegativePriceException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void removeTheater() {
-        //TODO
+        Theater theater = theaters.getSelectionModel().getSelectedItem();
+        TheaterList.getInstance().remove(theater);
+        theaters.getItems().remove(theater);
+        PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
     }
 
     @Override

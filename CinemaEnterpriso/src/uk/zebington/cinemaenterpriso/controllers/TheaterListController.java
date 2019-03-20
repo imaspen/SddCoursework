@@ -5,40 +5,38 @@ import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 import uk.zebington.cinemaenterpriso.controllers.admin.AdminPanelController;
 import uk.zebington.cinemaenterpriso.entities.Theater;
+import uk.zebington.cinemaenterpriso.entities.TheaterList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * @author Aspen Thompson
  */
 public class TheaterListController extends PageController {
-    private ArrayList<Theater> theaters;
-
     @FXML
     public VBox theaterContainer;
 
-    public TheaterListController(ArrayList<Theater> theaters) {
+    public TheaterListController() {
         super("theaterList");
-        this.theaters = theaters;
-        addTheatersToList();
+        addTheatersToList(TheaterList.getInstance());
     }
 
-    public TheaterListController(Theater... theaters) {
-        super("theaterList");
-        this.theaters = new ArrayList<>();
-        this.theaters.addAll(Arrays.asList(theaters));
-        addTheatersToList();
-    }
-
-    private void addTheatersToList() {
-        for (Theater theater : this.theaters) {
+    private void addTheatersToList(Collection<Theater> theaters) {
+        for (Theater theater : theaters) {
             theaterContainer.getChildren().add(makeListItem(theater));
         }
     }
 
     private Parent makeListItem(Theater theater) {
         return (new TheaterListItemController(theater)).getParent();
+    }
+
+    @Override
+    public void onBack() {
+        theaterContainer.getChildren().clear();
+        addTheatersToList(TheaterList.getInstance());
     }
 
     @FXML

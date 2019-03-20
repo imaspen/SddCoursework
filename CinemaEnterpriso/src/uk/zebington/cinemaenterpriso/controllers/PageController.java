@@ -9,5 +9,7 @@ public abstract class PageController extends Controller {
         super(fxmlName, depth);
     }
 
+    public void onBack() {}
+
     public abstract String getTitle();
 }

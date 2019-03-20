@@ -43,7 +43,7 @@ public class ReceiptController extends PageController {
 
     @FXML
     public void done() {
-        PageContainerController.getInstance().loadNewPage(new TheaterListController(TheaterList.getInstance()));
+        PageContainerController.getInstance().loadNewPage(new TheaterListController());
         PageContainerController.getInstance().resetHistory();
     }
 

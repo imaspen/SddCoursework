@@ -161,8 +161,8 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="addTheater" mnemonicParsing="false" text="Add" />
-                        <Button fx:id="removeTheater" mnemonicParsing="false" text="Remove" />
+                        <Button mnemonicParsing="false" onAction="#addTheater" text="Add" />
+                        <Button mnemonicParsing="false" onAction="#removeTheater" text="Remove" />
                      </children>
                   </HBox>
                </children>
