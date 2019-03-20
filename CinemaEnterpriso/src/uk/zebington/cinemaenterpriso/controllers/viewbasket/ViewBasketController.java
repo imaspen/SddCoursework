@@ -8,7 +8,7 @@ import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.controllers.buyaddon.BuyAddOnController;
 import uk.zebington.cinemaenterpriso.controllers.checkout.CheckoutController;
 import uk.zebington.cinemaenterpriso.entities.AddOn;
-import uk.zebington.cinemaenterpriso.entities.Catalogue;
+import uk.zebington.cinemaenterpriso.entities.singletons.Catalogue;
 import uk.zebington.cinemaenterpriso.entities.Price;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
 

@@ -11,7 +11,7 @@ import uk.zebington.cinemaenterpriso.controllers.ReceiptController;
 import uk.zebington.cinemaenterpriso.controllers.checkout.cashgiven.CashGivenController;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
 import uk.zebington.cinemaenterpriso.entities.Ticket;
-import uk.zebington.cinemaenterpriso.entities.TicketList;
+import uk.zebington.cinemaenterpriso.entities.singletons.TicketList;
 
 import java.util.ArrayList;
 

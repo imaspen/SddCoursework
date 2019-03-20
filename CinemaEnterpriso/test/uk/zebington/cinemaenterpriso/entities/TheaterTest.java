@@ -3,6 +3,7 @@ package uk.zebington.cinemaenterpriso.entities;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import uk.zebington.cinemaenterpriso.entities.singletons.TicketList;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 class TheaterTest {

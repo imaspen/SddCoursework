@@ -1,5 +1,6 @@
-package uk.zebington.cinemaenterpriso.entities;
+package uk.zebington.cinemaenterpriso.entities.singletons;
 
+import uk.zebington.cinemaenterpriso.entities.AddOn;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 import java.util.ArrayList;

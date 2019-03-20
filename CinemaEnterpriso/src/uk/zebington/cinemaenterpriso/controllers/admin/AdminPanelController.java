@@ -8,6 +8,8 @@ import javafx.scene.layout.HBox;
 import uk.zebington.cinemaenterpriso.PersistenceManager;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.entities.*;
+import uk.zebington.cinemaenterpriso.entities.singletons.TheaterList;
+import uk.zebington.cinemaenterpriso.entities.singletons.TicketList;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 import java.util.ArrayList;

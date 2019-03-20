@@ -7,7 +7,7 @@ import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.controllers.admin.AdminPanelController;
 import uk.zebington.cinemaenterpriso.entities.Theater;
-import uk.zebington.cinemaenterpriso.entities.TheaterList;
+import uk.zebington.cinemaenterpriso.entities.singletons.TheaterList;
 
 import java.util.Collection;
 

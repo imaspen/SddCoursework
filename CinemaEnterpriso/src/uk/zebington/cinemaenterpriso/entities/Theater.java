@@ -1,5 +1,7 @@
 package uk.zebington.cinemaenterpriso.entities;
 
+import uk.zebington.cinemaenterpriso.entities.singletons.TicketList;
+
 import java.io.Serializable;
 
 /**
