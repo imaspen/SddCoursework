@@ -135,3 +135,11 @@ ScrollPane:focused {
     -fx-background-insets: 0;
     -fx-background-radius: 0;
 }
+
+DialogPane {
+    -fx-background-color: #0c0c0d;
+}
+
+DialogPane:header *.header-panel {
+    -fx-background-color: #1b1b1f;
+}

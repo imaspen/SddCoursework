@@ -1,9 +1,9 @@
 package uk.zebington.cinemaenterpriso.controllers.admin;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import uk.zebington.cinemaenterpriso.PersistenceManager;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
@@ -36,11 +36,37 @@ public class AdminPanelController extends PageController {
     public TextArea movieDescription;
     @FXML
     public HBox editButtons;
+    @FXML
+    public Button addButton;
+    @FXML
+    public Button removeButton;
+    @FXML
+    public Button resetButton;
+    @FXML
+    public Button saveButton;
+
+    private boolean changesMade;
 
     public AdminPanelController() {
         super("admin/adminPanel", 2);
         theaters.getItems().setAll(TheaterList.getInstance());
         theaters.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> updateFields(newValue));
+        theaters.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        theaters.getSelectionModel().selectFirst();
+
+        addChangeListeners();
+
+        changesMade = false;
+    }
+
+    private void addChangeListeners() {
+        theaterId.textProperty().addListener(o -> changeMade());
+        theaterSeats.textProperty().addListener(o -> changeMade());
+        theaterPrice.textProperty().addListener(o -> changeMade());
+        movieTitle.textProperty().addListener(o -> changeMade());
+        movieRating.textProperty().addListener(o -> changeMade());
+        movieGenre.textProperty().addListener(o -> changeMade());
+        movieDescription.textProperty().addListener(o -> changeMade());
     }
 
     private void updateFields(Theater theater) {
@@ -52,6 +78,7 @@ public class AdminPanelController extends PageController {
         movieRating.setText(movie.getAgeRating().toString());
         movieGenre.setText(movie.getGenre());
         movieDescription.setText(movie.getDescription());
+        resetChangesMade();
     }
 
     @FXML
@@ -81,6 +108,7 @@ public class AdminPanelController extends PageController {
             PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
             toUpdate.forEach(ticket -> ticket.setTheater(theater));
             PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
+            resetChangesMade();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -96,8 +124,11 @@ public class AdminPanelController extends PageController {
                     new Price(0)
             );
             TheaterList.getInstance().add(theater);
-            theaters.getItems().add(theater);
             PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
+            theaters.getItems().add(theater);
+            theaters.getSelectionModel().select(theater);
+            changeMade();
+            resetButton.setDisable(true);
         } catch (NegativePriceException e) {
             e.printStackTrace();
         }
@@ -109,6 +140,39 @@ public class AdminPanelController extends PageController {
         TheaterList.getInstance().remove(theater);
         theaters.getItems().remove(theater);
         PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
+    }
+
+    @FXML
+    public void changeMade() {
+        if (!changesMade) {
+            changesMade = true;
+            addButton.setDisable(true);
+            removeButton.setDisable(true);
+            resetButton.setDisable(false);
+            saveButton.setDisable(false);
+            theaters.setDisable(true);
+        }
+    }
+
+    private void resetChangesMade() {
+        changesMade = false;
+        addButton.setDisable(false);
+        removeButton.setDisable(false);
+        resetButton.setDisable(true);
+        saveButton.setDisable(true);
+        theaters.setDisable(false);
+        theaters.refresh();
+    }
+
+    @Override
+    public boolean beforeBack() {
+        if (!changesMade) return true;
+        Alert saveWarning = new Alert(Alert.AlertType.WARNING);
+        saveWarning.getDialogPane().getStylesheets().add(this.getParent().getScene().getStylesheets().get(0));
+        saveWarning.setHeaderText("Unsaved Changes");
+        saveWarning.setContentText("Please either save or reset your changes.");
+        saveWarning.show();
+        return false;
     }
 
     @Override

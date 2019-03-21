@@ -55,10 +55,12 @@ public class PageContainerController extends Controller {
     @FXML
     public void loadPreviousPage() {
         if (!history.isEmpty()) {
-            loadPage(history.removeFirst());
-            active.onBack();
-            if (history.isEmpty()) {
-                backButton.setDisable(true);
+            if (active.beforeBack()) {
+                loadPage(history.removeFirst());
+                active.onBack();
+                if (history.isEmpty()) {
+                    backButton.setDisable(true);
+                }
             }
         }
     }
