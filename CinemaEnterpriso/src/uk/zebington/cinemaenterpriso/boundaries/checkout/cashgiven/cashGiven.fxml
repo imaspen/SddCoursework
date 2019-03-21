@@ -27,7 +27,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </GridPane>
-      <VBox fx:id="denominationsContainer" />
+      <VBox fx:id="denominationsContainer" spacing="5.0" />
       <GridPane layoutX="10.0" layoutY="10.0" styleClass="highlight">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" />
