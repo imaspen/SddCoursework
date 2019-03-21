@@ -20,19 +20,19 @@
       <HBox alignment="CENTER" GridPane.columnSpan="2">
          <children>
             <Label text="Card Number: " />
-            <TextField HBox.hgrow="ALWAYS" />
+            <TextField HBox.hgrow="ALWAYS" fx:id="cardNumber" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" GridPane.rowIndex="1">
          <children>
             <Label text="Expiry: " />
-            <TextField prefWidth="70.0" HBox.hgrow="ALWAYS" />
+            <TextField prefWidth="70.0" HBox.hgrow="ALWAYS" fx:id="expiry" />
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <Label text="CVC: " />
-            <TextField prefWidth="70.0" HBox.hgrow="ALWAYS" />
+            <TextField prefWidth="70.0" HBox.hgrow="ALWAYS" fx:id="cvc" />
          </children>
       </HBox>
    </children>

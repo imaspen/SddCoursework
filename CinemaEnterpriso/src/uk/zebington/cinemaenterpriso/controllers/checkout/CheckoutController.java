@@ -16,9 +16,6 @@ import uk.zebington.cinemaenterpriso.entities.Purchasable;
 import uk.zebington.cinemaenterpriso.entities.Ticket;
 import uk.zebington.cinemaenterpriso.entities.singletons.TicketList;
 
-import java.util.ArrayList;
-import java.util.function.Consumer;
-
 /**
  * @author Aspen Thompson
  */
@@ -44,8 +41,8 @@ public class CheckoutController extends PageController {
 
         basketCost.setText(basket.getTotalCost().toString());
 
-        cardDetails = new CardDetailsController();
-        cashGiven = new CashGivenController(basket.getTotalCost(), paymentValid -> this.confirmButton.setDisable(!paymentValid));
+        cardDetails = new CardDetailsController(this::enableDoneButton);
+        cashGiven = new CashGivenController(basket.getTotalCost(), this::enableDoneButton);
 
         ToggleGroup toggleGroup = new ToggleGroup();
         cashRadio.setToggleGroup(toggleGroup);
@@ -85,5 +82,9 @@ public class CheckoutController extends PageController {
         PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
         PageContainerController.getInstance().loadNewPage(new ReceiptController(basket));
         PageContainerController.getInstance().resetHistory();
+    }
+
+    private void enableDoneButton(Boolean paymentValid) {
+        this.confirmButton.setDisable(!paymentValid);
     }
 }

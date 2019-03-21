@@ -37,6 +37,9 @@
     -fx-background-color: #34343a;
     -fx-background-radius: 0;
 }
+.text-field.invalid {
+    -fx-border-color: red;
+}
 
 .spinner {
     -fx-border-color: #0c0c0d;
