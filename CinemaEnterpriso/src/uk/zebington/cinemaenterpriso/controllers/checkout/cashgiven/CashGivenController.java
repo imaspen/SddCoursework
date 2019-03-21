@@ -16,8 +16,9 @@ public class CashGivenController extends Controller {
     public VBox denominationsContainer;
 
     private ArrayList<CashGivenItemController> denominations;
+    private Price target;
 
-    public CashGivenController() {
+    public CashGivenController(Price target) {
         super("checkout/cashgiven/cashGiven", 3);
         try {
             ArrayList<Price> denoms = new ArrayList<Price>() {

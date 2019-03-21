@@ -7,10 +7,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import uk.zebington.cinemaenterpriso.controllers.Controller;
 import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
 import uk.zebington.cinemaenterpriso.controllers.viewbasket.ViewBasketController;
-import uk.zebington.cinemaenterpriso.entities.Movie;
-import uk.zebington.cinemaenterpriso.entities.Purchasable;
-import uk.zebington.cinemaenterpriso.entities.Theater;
-import uk.zebington.cinemaenterpriso.entities.Ticket;
+import uk.zebington.cinemaenterpriso.entities.*;
 
 import java.util.ArrayList;
 
@@ -50,7 +47,7 @@ public class TheaterListItemController extends Controller {
 
     @FXML
     public void bookTickets() {
-        ArrayList<Purchasable> basket = new ArrayList<>();
+        Basket basket = new Basket();
         for (int i = 0; i < ticketsAmountSelector.getValue(); i++) {
             basket.add(new Ticket(theater));
         }

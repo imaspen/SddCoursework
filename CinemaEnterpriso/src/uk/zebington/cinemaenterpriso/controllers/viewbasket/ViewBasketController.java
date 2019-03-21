@@ -8,6 +8,7 @@ import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.controllers.buyaddon.BuyAddOnController;
 import uk.zebington.cinemaenterpriso.controllers.checkout.CheckoutController;
 import uk.zebington.cinemaenterpriso.entities.AddOn;
+import uk.zebington.cinemaenterpriso.entities.Basket;
 import uk.zebington.cinemaenterpriso.entities.singletons.Catalogue;
 import uk.zebington.cinemaenterpriso.entities.Price;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
@@ -22,21 +23,18 @@ public class ViewBasketController extends PageController {
     @FXML
     public Label totalPriceLabel;
 
-    private ArrayList<Purchasable> basket;
-    private Price totalPrice;
+    private Basket basket;
 
-    public ViewBasketController(ArrayList<Purchasable> basket) {
+    public ViewBasketController(Basket basket) {
         super("viewbasket/viewBasket", 2);
-        this.basket = new ArrayList<>();
-        this.totalPrice = new Price();
+        this.basket = new Basket();
         basket.forEach(this::addBasketItem);
     }
 
     private void addBasketItem(Purchasable purchasable) {
         basket.add(purchasable);
-        totalPrice.addPrice(purchasable.getPrice());
         basketItems.getChildren().add((new ViewBasketItemController(purchasable)).getParent());
-        totalPriceLabel.setText(totalPrice.toString());
+        totalPriceLabel.setText(basket.getTotalCost().toString());
     }
 
     @FXML

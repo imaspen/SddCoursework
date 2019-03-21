@@ -9,6 +9,7 @@ import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.controllers.ReceiptController;
 import uk.zebington.cinemaenterpriso.controllers.checkout.cashgiven.CashGivenController;
+import uk.zebington.cinemaenterpriso.entities.Basket;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
 import uk.zebington.cinemaenterpriso.entities.Ticket;
 import uk.zebington.cinemaenterpriso.entities.singletons.TicketList;
@@ -26,16 +27,16 @@ public class CheckoutController extends PageController {
     @FXML
     public Pane checkoutPane;
 
-    private ArrayList<Purchasable> basket;
+    private Basket basket;
     private CardDetailsController cardDetails;
     private CashGivenController cashGiven;
 
-    public CheckoutController(ArrayList<Purchasable> basket) {
+    public CheckoutController(Basket basket) {
         super("checkout/checkout", 2);
         this.basket = basket;
 
         cardDetails = new CardDetailsController();
-        cashGiven = new CashGivenController();
+        cashGiven = new CashGivenController(basket.getTotalCost());
 
         ToggleGroup toggleGroup = new ToggleGroup();
         cashRadio.setToggleGroup(toggleGroup);
