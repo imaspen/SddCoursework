@@ -28,7 +28,7 @@ public class AdminPanelController extends PageController {
     @FXML
     public TextField movieTitle;
     @FXML
-    public TextField movieRating;
+    public ComboBox<AgeRating> movieRating;
     @FXML
     public TextField movieGenre;
     @FXML
@@ -48,6 +48,10 @@ public class AdminPanelController extends PageController {
 
     public AdminPanelController() {
         super("admin/adminPanel", 2);
+
+        System.out.println(movieRating);
+        movieRating.getItems().setAll(AgeRating.values());
+
         theaters.getItems().setAll(TheaterList.getInstance());
         theaters.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> updateFields(newValue));
         theaters.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -63,7 +67,7 @@ public class AdminPanelController extends PageController {
         theaterSeats.textProperty().addListener(o -> changeMade());
         theaterPrice.textProperty().addListener(o -> changeMade());
         movieTitle.textProperty().addListener(o -> changeMade());
-        movieRating.textProperty().addListener(o -> changeMade());
+        movieRating.getSelectionModel().selectedItemProperty().addListener(o -> changeMade());
         movieGenre.textProperty().addListener(o -> changeMade());
         movieDescription.textProperty().addListener(o -> changeMade());
     }
@@ -74,7 +78,7 @@ public class AdminPanelController extends PageController {
         theaterPrice.setText(theater.getPrice().toString());
         Movie movie = theater.getShowingMovie();
         movieTitle.setText(movie.getTitle());
-        movieRating.setText(movie.getAgeRating().toString());
+        movieRating.getSelectionModel().select(movie.getAgeRating());
         movieGenre.setText(movie.getGenre());
         movieDescription.setText(movie.getDescription());
         resetChangesMade();
@@ -114,10 +118,7 @@ public class AdminPanelController extends PageController {
         if (title.length() == 0) {
             erroredFields.add("Title");
         }
-        AgeRating ageRating = AgeRating.fromString(movieRating.getText());
-        if (ageRating == null) {
-            erroredFields.add("Age Rating");
-        }
+        AgeRating ageRating = movieRating.getValue();
         String genre = movieGenre.getText();
         if (genre.length() == 0) {
             erroredFields.add("Genre");

@@ -108,6 +108,15 @@
 .list-view .list-cell:odd {
     -fx-background-color: #2f2f35;
 }
+.list-view .list-cell:hover {
+    -fx-background-color: #414149;
+}
+.list-view .list-cell:hover:empty {
+    -fx-background-color: #34343a;
+}
+.list-view .list-cell:odd:hover:empty {
+    -fx-background-color: #2f2f35;
+}
 .list-view .list-cell:focused {
     -fx-background-color: #5f5f63;
 }
@@ -142,4 +151,14 @@ DialogPane {
 
 DialogPane:header *.header-panel {
     -fx-background-color: #1b1b1f;
+}
+
+.combo-box-base {
+    -fx-background-insets: 0;
+    -fx-background-color: #34343a;
+    -fx-border-color: #0c0c0d;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #c2c2c2;
 }
