@@ -37,6 +37,18 @@ public class Price implements Serializable {
         }
     }
 
+    public Price times(Integer amount) throws NegativePriceException {
+        return new Price(this.amount * amount);
+    }
+
+    public Price minus(Integer amount) throws NegativePriceException {
+        return new Price(this.amount - amount);
+    }
+
+    public Price minus(Price price) throws NegativePriceException {
+        return new Price(this.amount - price.amount);
+    }
+
     @Override
     public String toString() {
         return (NumberFormat.getCurrencyInstance()).format(amount / 100 + (double) (amount % 100) / 100);

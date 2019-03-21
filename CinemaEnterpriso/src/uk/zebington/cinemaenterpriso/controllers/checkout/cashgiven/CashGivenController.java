@@ -1,6 +1,7 @@
 package uk.zebington.cinemaenterpriso.controllers.checkout.cashgiven;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import uk.zebington.cinemaenterpriso.controllers.Controller;
 import uk.zebington.cinemaenterpriso.entities.Price;
@@ -14,12 +15,17 @@ import java.util.ArrayList;
 public class CashGivenController extends Controller {
     @FXML
     public VBox denominationsContainer;
+    @FXML
+    public Label givenTotal;
+    @FXML
+    public Label changeTotal;
 
     private ArrayList<CashGivenItemController> denominations;
     private Price target;
 
     public CashGivenController(Price target) {
         super("checkout/cashgiven/cashGiven", 3);
+        this.target = target;
         try {
             ArrayList<Price> denoms = new ArrayList<Price>() {
                 {
@@ -37,10 +43,43 @@ public class CashGivenController extends Controller {
                 }
             };
             denominations = new ArrayList<>();
-            denoms.forEach(denom -> denominations.add(new CashGivenItemController(denom)));
+            denoms.forEach(denom -> denominations.add(new CashGivenItemController(denom, this)));
             denominations.forEach(denomination -> denominationsContainer.getChildren().add(denomination.getParent()));
         } catch (NegativePriceException e) {
             e.printStackTrace();
         }
+    }
+
+    public void updateTotal() {
+        Price total = new Price();
+        denominations.forEach(controller -> total.addPrice(controller.getTotal()));
+        givenTotal.setText(total.toString());
+        calculateChange(total);
+        calculateChangeTotal();
+    }
+
+    private void calculateChange(Price total) {
+        if (target.getAmount() > total.getAmount()) {
+            denominations.forEach(denomination -> denomination.setChangeAmount(0));
+            return;
+        }
+        try {
+            Price changeRemaining = total.minus(target);
+            for (CashGivenItemController denomination : denominations) {
+                Integer denominationNeeded = changeRemaining.getAmount() / denomination.getDenomination().getAmount();
+                denomination.setChangeAmount(denominationNeeded);
+                changeRemaining = changeRemaining.minus(denomination.getDenomination().times(denominationNeeded));
+            }
+        } catch (NegativePriceException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void calculateChangeTotal() {
+        Price total = new Price();
+        denominations.forEach(denomination -> {
+            total.addPrice(denomination.getChangeTotal());
+        });
+        changeTotal.setText(total.toString());
     }
 }

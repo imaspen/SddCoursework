@@ -1,6 +1,7 @@
 package uk.zebington.cinemaenterpriso.controllers.checkout;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
  */
 public class CheckoutController extends PageController {
     @FXML
+    public Label basketCost;
+    @FXML
     public RadioButton cashRadio;
     @FXML
     public RadioButton cardRadio;
@@ -34,6 +37,8 @@ public class CheckoutController extends PageController {
     public CheckoutController(Basket basket) {
         super("checkout/checkout", 2);
         this.basket = basket;
+
+        basketCost.setText(basket.getTotalCost().toString());
 
         cardDetails = new CardDetailsController();
         cashGiven = new CashGivenController(basket.getTotalCost());

@@ -39,8 +39,8 @@
          </rowConstraints>
          <children>
             <Label text="Total:" />
-            <Label text="£0.00" GridPane.columnIndex="1" />
-            <Label text="£0.00" textAlignment="RIGHT" GridPane.columnIndex="2" />
+            <Label fx:id="givenTotal" text="£0.00" GridPane.columnIndex="1" />
+            <Label fx:id="changeTotal" text="£0.00" textAlignment="RIGHT" GridPane.columnIndex="2" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
