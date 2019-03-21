@@ -4,10 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import uk.zebington.cinemaenterpriso.controllers.Controller;
+import uk.zebington.cinemaenterpriso.controllers.checkout.CheckoutController;
 import uk.zebington.cinemaenterpriso.entities.Price;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 /**
  * @author Aspen Thompson
@@ -22,10 +24,12 @@ public class CashGivenController extends Controller {
 
     private ArrayList<CashGivenItemController> denominations;
     private Price target;
+    private Consumer<Boolean> paymentValid;
 
-    public CashGivenController(Price target) {
+    public CashGivenController(Price target, Consumer<Boolean> paymentValid) {
         super("checkout/cashgiven/cashGiven", 3);
         this.target = target;
+        this.paymentValid = paymentValid;
         try {
             ArrayList<Price> denoms = new ArrayList<Price>() {
                 {
@@ -61,6 +65,7 @@ public class CashGivenController extends Controller {
     private void calculateChange(Price total) {
         if (target.getAmount() > total.getAmount()) {
             denominations.forEach(denomination -> denomination.setChangeAmount(0));
+            paymentValid.accept(false);
             return;
         }
         try {
@@ -70,6 +75,7 @@ public class CashGivenController extends Controller {
                 denomination.setChangeAmount(denominationNeeded);
                 changeRemaining = changeRemaining.minus(denomination.getDenomination().times(denominationNeeded));
             }
+            paymentValid.accept(true);
         } catch (NegativePriceException e) {
             e.printStackTrace();
         }

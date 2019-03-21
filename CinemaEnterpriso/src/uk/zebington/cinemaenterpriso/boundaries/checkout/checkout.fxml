@@ -25,7 +25,7 @@
       <StackPane fx:id="checkoutPane" />
       <HBox alignment="CENTER_RIGHT">
          <children>
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#confirmPurchase" text="Done" />
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" fx:id="confirmButton" onAction="#confirmPurchase" disable="true" text="Done" />
          </children>
       </HBox>
    </children>
