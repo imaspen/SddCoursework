@@ -1,7 +1,5 @@
 package uk.zebington.cinemaenterpriso.controllers.admin;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -11,6 +9,7 @@ import uk.zebington.cinemaenterpriso.entities.*;
 import uk.zebington.cinemaenterpriso.entities.singletons.TheaterList;
 import uk.zebington.cinemaenterpriso.entities.singletons.TicketList;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
+import uk.zebington.cinemaenterpriso.exceptions.PriceFormatException;
 
 import java.util.ArrayList;
 
@@ -89,29 +88,64 @@ public class AdminPanelController extends PageController {
     @FXML
     public void commitChanges() {
         Theater theater = theaters.getSelectionModel().getSelectedItem();
-        try {
-            ArrayList<Ticket> toUpdate = new ArrayList<>();
-            for (Ticket ticket : TicketList.getInstance()) {
-                if (ticket.getTheater().equals(theater)) toUpdate.add(ticket);
-            }
-            Integer seats = Integer.valueOf(theaterSeats.getText());
-            Price price = Price.fromString(theaterPrice.getText());
-            AgeRating ageRating = AgeRating.fromString(movieRating.getText());
-            theater.setId(theaterId.getText());
-            theater.setSeats(seats);
-            theater.setPrice(price);
-            Movie movie = theater.getShowingMovie();
-            movie.setTitle(movieTitle.getText());
-            movie.setAgeRating(ageRating);
-            movie.setGenre(movieGenre.getText());
-            movie.setDescription(movieDescription.getText());
-            PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
-            toUpdate.forEach(ticket -> ticket.setTheater(theater));
-            PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
-            resetChangesMade();
-        } catch (Exception e) {
-            e.printStackTrace();
+        ArrayList<Ticket> toUpdate = new ArrayList<>();
+        for (Ticket ticket : TicketList.getInstance()) {
+            if (ticket.getTheater().equals(theater)) toUpdate.add(ticket);
         }
+
+        ArrayList<String> erroredFields = new ArrayList<>();
+        String id = theaterId.getText();
+        if (id.length() == 0) {
+            erroredFields.add("ID");
+        }
+        Integer seats = 0;
+        try {
+            seats = Integer.valueOf(theaterSeats.getText());
+        } catch (NumberFormatException e) {
+            erroredFields.add("Seats");
+        }
+        Price price = null;
+        try {
+            price = Price.fromString(theaterPrice.getText());
+        } catch (NegativePriceException | PriceFormatException e) {
+            erroredFields.add("Price");
+        }
+        String title = movieTitle.getText();
+        if (title.length() == 0) {
+            erroredFields.add("Title");
+        }
+        AgeRating ageRating = AgeRating.fromString(movieRating.getText());
+        if (ageRating == null) {
+            erroredFields.add("Age Rating");
+        }
+        String genre = movieGenre.getText();
+        if (genre.length() == 0) {
+            erroredFields.add("Genre");
+        }
+        String description = movieDescription.getText();
+        if (description.length() == 0) {
+            erroredFields.add("Description");
+        }
+
+        if (!erroredFields.isEmpty()) {
+            createThemedWarning(
+                    "Invalid Values",
+                    "The following fields are invalid: " + String.join(", ", erroredFields) + "."
+            );
+            return;
+        }
+        theater.setId(id);
+        theater.setSeats(seats);
+        theater.setPrice(price);
+        Movie movie = theater.getShowingMovie();
+        movie.setTitle(title);
+        movie.setAgeRating(ageRating);
+        movie.setGenre(genre);
+        movie.setDescription(description);
+        PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
+        toUpdate.forEach(ticket -> ticket.setTheater(theater));
+        PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
+        resetChangesMade();
     }
 
     @FXML
@@ -167,12 +201,16 @@ public class AdminPanelController extends PageController {
     @Override
     public boolean beforeBack() {
         if (!changesMade) return true;
-        Alert saveWarning = new Alert(Alert.AlertType.WARNING);
-        saveWarning.getDialogPane().getStylesheets().add(this.getParent().getScene().getStylesheets().get(0));
-        saveWarning.setHeaderText("Unsaved Changes");
-        saveWarning.setContentText("Please either save or reset your changes.");
-        saveWarning.show();
+        createThemedWarning("Unsaved Changes", "Please either save or reset your changes.");
         return false;
+    }
+
+    private void createThemedWarning(String headerText, String contentText) {
+        Alert warning = new Alert(Alert.AlertType.WARNING);
+        warning.getDialogPane().getStylesheets().add(this.getParent().getScene().getStylesheets().get(0));
+        warning.setHeaderText(headerText);
+        warning.setContentText(contentText);
+        warning.show();
     }
 
     @Override
