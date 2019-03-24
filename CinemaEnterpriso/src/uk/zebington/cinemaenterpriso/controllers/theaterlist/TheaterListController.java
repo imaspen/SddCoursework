@@ -48,6 +48,7 @@ public class TheaterListController extends PageController {
 
     @Override
     public void onBack() {
+        highlightNext = false;
         theaterContainer.getChildren().clear();
         addTheatersToList(TheaterList.getInstance());
     }

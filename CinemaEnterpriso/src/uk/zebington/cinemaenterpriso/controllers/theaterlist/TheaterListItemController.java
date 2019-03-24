@@ -26,6 +26,8 @@ public class TheaterListItemController extends Controller {
     @FXML
     public Label ticketsAvailable;
     @FXML
+    public Label price;
+    @FXML
     public Spinner<Integer> ticketsAmountSelector;
 
     TheaterListItemController(Theater theater) {
@@ -36,7 +38,8 @@ public class TheaterListItemController extends Controller {
         this.movieGenre.setText(movie.getGenre());
         this.movieRating.setText(movie.getAgeRating().toString());
         Integer ticketsAvailable = theater.getTicketsAvailable();
-        this.ticketsAvailable.setText("" + ticketsAvailable);
+        this.ticketsAvailable.setText(theater.getTicketsAvailable().toString());
+        this.price.setText(theater.getPrice().toString());
         ((SpinnerValueFactory.IntegerSpinnerValueFactory)this.ticketsAmountSelector.getValueFactory()).setMax(Math.min(ticketsAvailable, 10));
     }
 
