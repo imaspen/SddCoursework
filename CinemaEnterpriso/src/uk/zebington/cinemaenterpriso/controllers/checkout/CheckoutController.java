@@ -41,8 +41,8 @@ public class CheckoutController extends PageController {
 
         basketCost.setText(basket.getTotalCost().toString());
 
-        cardDetails = new CardDetailsController(this::enableDoneButton);
         cashGiven = new CashGivenController(basket.getTotalCost(), this::enableDoneButton);
+        cardDetails = new CardDetailsController(this::enableDoneButton);
 
         ToggleGroup toggleGroup = new ToggleGroup();
         cashRadio.setToggleGroup(toggleGroup);
@@ -54,7 +54,12 @@ public class CheckoutController extends PageController {
                 cardSelected();
             }
         });
-        cashRadio.setSelected(true);
+        if (basket.getTotalCost().getAmount() > 200000) {
+            cashRadio.setDisable(true);
+            cardRadio.setSelected(true);
+        } else {
+            cashRadio.setSelected(true);
+        }
     }
 
     @Override
