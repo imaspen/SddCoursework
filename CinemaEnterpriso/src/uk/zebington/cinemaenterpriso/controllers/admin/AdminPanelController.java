@@ -105,6 +105,9 @@ public class AdminPanelController extends PageController {
         Integer seats = 0;
         try {
             seats = Integer.valueOf(theaterSeats.getText());
+            if (seats < theater.getSeats() - theater.getTicketsAvailable()) {
+                erroredFields.add("Seats - more tickets sold than seats");
+            }
         } catch (NumberFormatException e) {
             erroredFields.add("Seats");
         }
