@@ -94,7 +94,7 @@
     -fx-font-weight: bold;
 }
 
-#app-inner {
+#app-inner, .root {
     -fx-background-color: #1b1b1f;
     -fx-border-color: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
     -fx-border-style: solid;
