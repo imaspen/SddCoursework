@@ -9,8 +9,9 @@ import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 
 import java.util.ArrayList;
 
-public class TheaterList extends ArrayList<Theater> {
+public class TheaterList extends ArrayList<Theater> implements Persistable {
     private static TheaterList ourInstance;
+    private static final String SAVE_PATH = "TheaterList.ser";
 
     private TheaterList() {
         super();
@@ -24,10 +25,15 @@ public class TheaterList extends ArrayList<Theater> {
     }
 
     public static void loadInstance() {
-        ourInstance = PersistenceManager.loadInstance("TheaterList.ser");
+        ourInstance = (TheaterList) PersistenceManager.loadInstance(SAVE_PATH);
         if (ourInstance == null) {
             ourInstance = new TheaterList();
-            PersistenceManager.writeInstance(ourInstance, "TheaterList.ser");
+            PersistenceManager.writeInstance(ourInstance);
         }
+    }
+
+    @Override
+    public String getSavePath() {
+        return SAVE_PATH;
     }
 }

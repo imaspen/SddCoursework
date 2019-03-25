@@ -5,19 +5,27 @@ import uk.zebington.cinemaenterpriso.entities.Ticket;
 
 import java.util.ArrayList;
 
-public class TicketList extends ArrayList<Ticket> {
+public class TicketList extends ArrayList<Ticket> implements Persistable {
     private static TicketList ourInstance;
+    private static final String SAVE_PATH = "TicketList.ser";
 
     public static TicketList getInstance() {
         if (ourInstance == null) {
-            ourInstance = PersistenceManager.loadInstance("TicketList.ser");
+            PersistenceManager.loadInstance(SAVE_PATH);
             if (ourInstance == null) {
                 ourInstance = new TicketList();
-                PersistenceManager.writeInstance(ourInstance, "TicketList.ser");
+                PersistenceManager.writeInstance(ourInstance);
             }
         }
         return ourInstance;
     }
 
-    private TicketList() {}
+    private TicketList() {
+        super();
+    }
+
+    @Override
+    public String getSavePath() {
+        return SAVE_PATH;
+    }
 }

@@ -40,15 +40,13 @@ public abstract class AdminTabController<T> extends Controller {
         this.elements.getSelectionModel().selectedItemProperty().addListener(o -> resetChanges());
         this.elements.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         this.elements.getSelectionModel().selectFirst();
-        resetChanges();
+        if (!elements.isEmpty()) {
+            resetChanges();
+        }
     }
 
     public Boolean getChangesMade() {
         return changesMade;
-    }
-
-    public EditorController<T> getEditorController() {
-        return this.editorController;
     }
 
     public void setChangesMade(Boolean changesMade) {
@@ -60,6 +58,10 @@ public abstract class AdminTabController<T> extends Controller {
         saveButton.setDisable(!changesMade);
         elements.setDisable(changesMade);
         elements.refresh();
+    }
+
+    public EditorController<T> getEditorController() {
+        return this.editorController;
     }
 
     @FXML

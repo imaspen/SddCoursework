@@ -1,17 +1,19 @@
 package uk.zebington.cinemaenterpriso;
 
+import uk.zebington.cinemaenterpriso.entities.singletons.Persistable;
+
 import java.io.*;
 
 /**
  * @author Aspen Thompson
  */
 public class PersistenceManager {
-    public static <T> T loadInstance(String path) {
+    public static Persistable loadInstance(String path) {
         try {
             System.out.println("Reading from " + path);
             FileInputStream fileIn = new FileInputStream(path);
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            T instance = (T) in.readObject();
+            Persistable instance = (Persistable) in.readObject();
             in.close();
             fileIn.close();
             return instance;
@@ -24,8 +26,9 @@ public class PersistenceManager {
         }
     }
 
-    public static void writeInstance(Serializable instance, String path) {
+    public static void writeInstance(Persistable instance) {
         try {
+            String path = instance.getSavePath();
             System.out.println("Writing to " + path);
             FileOutputStream fileOut = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);

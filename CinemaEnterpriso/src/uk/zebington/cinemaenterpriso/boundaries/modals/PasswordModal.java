@@ -38,7 +38,7 @@ public class PasswordModal extends Stage {
         container.getChildren().addAll(inputBox, button);
 
         Scene scene = new Scene(container);
-        scene.getStylesheets().add(getClass().getResource("../CinemaEnterpriso.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("../../CinemaEnterpriso.css").toExternalForm());
         this.setScene(scene);
     }
 

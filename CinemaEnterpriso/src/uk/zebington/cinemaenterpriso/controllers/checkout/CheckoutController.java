@@ -84,7 +84,7 @@ public class CheckoutController extends PageController {
                 TicketList.getInstance().add((Ticket) purchasable);
             }
         }
-        PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
+        PersistenceManager.writeInstance(TicketList.getInstance());
         PageContainerController.getInstance().loadNewPage(new ReceiptController(basket));
         PageContainerController.getInstance().resetHistory();
     }

@@ -28,7 +28,7 @@ public class AdminTheaterTabController extends AdminTabController<Theater> {
                     new Price(0)
             );
             TheaterList.getInstance().add(theater);
-            PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
+            PersistenceManager.writeInstance(TheaterList.getInstance());
             elements.getItems().add(theater);
             elements.getSelectionModel().select(theater);
             setChangesMade(true);
@@ -43,7 +43,7 @@ public class AdminTheaterTabController extends AdminTabController<Theater> {
         Theater theater = elements.getSelectionModel().getSelectedItem();
         TheaterList.getInstance().remove(theater);
         elements.getItems().remove(theater);
-        PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
+        PersistenceManager.writeInstance(TheaterList.getInstance());
     }
 
     @Override
@@ -64,9 +64,9 @@ public class AdminTheaterTabController extends AdminTabController<Theater> {
             return;
         }
 
-        PersistenceManager.writeInstance(TheaterList.getInstance(), "TheaterList.ser");
+        PersistenceManager.writeInstance(TheaterList.getInstance());
         toUpdate.forEach(ticket -> ticket.setTheater(theater));
-        PersistenceManager.writeInstance(TicketList.getInstance(), "TicketList.ser");
+        PersistenceManager.writeInstance(TicketList.getInstance());
         setChangesMade(false);
     }
 }
