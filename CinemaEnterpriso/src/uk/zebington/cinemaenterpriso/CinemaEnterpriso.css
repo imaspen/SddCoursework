@@ -165,3 +165,28 @@ DialogPane:header *.header-panel {
 .combo-box .arrow {
     -fx-background-color: #c2c2c2;
 }
+
+#admin-tabs .tab-header-background {
+    -fx-background-color: #0c0c0d;
+    -fx-background-radius: 5px 5px 0 0;
+}
+
+#admin-tabs .tab {
+    -fx-background-color: #34343a;
+    -fx-background-insets: 0 1 0 1, 0, 0;
+    -fx-opacity: 1;
+}
+
+#admin-tabs .tab:selected {
+    -fx-background-color: #1b1b1f;
+}
+
+#admin-tabs:focused .tab:selected .focus-indicator {
+    -fx-border-color: #b3868d;
+}
+
+.admin-tab {
+    -fx-border-color: #0c0c0d;
+    -fx-border-width: 0px 1px 1px 1px;
+    -fx-border-radius: 0 0 5px 5px;
+}
