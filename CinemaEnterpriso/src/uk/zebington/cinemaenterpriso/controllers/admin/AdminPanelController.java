@@ -3,7 +3,9 @@ package uk.zebington.cinemaenterpriso.controllers.admin;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
+import uk.zebington.cinemaenterpriso.controllers.admin.addon.AdminAddOnTabController;
 import uk.zebington.cinemaenterpriso.controllers.admin.theater.AdminTheaterTabController;
+import uk.zebington.cinemaenterpriso.entities.singletons.Catalogue;
 import uk.zebington.cinemaenterpriso.modals.WarningModal;
 
 import java.util.ArrayList;
@@ -27,8 +29,15 @@ public class AdminPanelController extends PageController {
 
         AdminTabController theaterTabController = new AdminTheaterTabController();
         theaterTab.setContent(theaterTabController.getParent());
-
         tabControllers.add(theaterTabController);
+
+        AdminAddOnTabController foodTabController = new AdminAddOnTabController(Catalogue.getInstance().getSnacks());
+        foodTab.setContent(foodTabController.getParent());
+        tabControllers.add(foodTabController);
+
+        AdminAddOnTabController drinkTabController = new AdminAddOnTabController(Catalogue.getInstance().getDrinks());
+        drinkTab.setContent(drinkTabController.getParent());
+        tabControllers.add(drinkTabController);
     }
 
     @Override

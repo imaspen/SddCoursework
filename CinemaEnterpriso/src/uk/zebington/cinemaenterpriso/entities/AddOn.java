@@ -33,4 +33,9 @@ public class AddOn implements Purchasable {
     public void setPrice(Price price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class AdminTheaterTabController extends AdminTabController<Theater> {
     public AdminTheaterTabController() {
-        super("admin/adminTab", 2, TheaterList.getInstance(), new AdminTheaterEditorController());
+        super("admin/adminTab", 3, TheaterList.getInstance(), new AdminTheaterEditorController());
     }
 
     @Override
