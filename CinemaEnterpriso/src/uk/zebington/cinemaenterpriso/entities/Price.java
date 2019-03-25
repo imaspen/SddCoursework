@@ -61,10 +61,15 @@ public class Price implements Serializable {
     }
 
     public static Price fromString(String price) throws PriceFormatException, NegativePriceException {
-        Pattern pricePattern = Pattern.compile("^(?:£)?(?<pounds>[0-9]+)?(?:\\.(?<pence>[0-9]{1,2}))?$");
+        Pattern pricePattern = Pattern.compile("^(?:£)?(?<pounds>[0-9,]+)?(?:\\.(?<pence>[0-9]{1,2}))?$");
         Matcher priceMatcher = pricePattern.matcher(price);
         if (priceMatcher.matches()) {
-            return new Price((Integer.valueOf(priceMatcher.group("pounds")) * 100) + Integer.valueOf(priceMatcher.group("pence")));
+            int amount = 0;
+            String pounds = priceMatcher.group("pounds");
+            String pence = priceMatcher.group("pence");
+            if (pounds != null) amount += Integer.parseInt(pounds) * 100;
+            if (pence != null) amount += Integer.parseInt(pence);
+            return new Price(amount);
         } else {
             throw new PriceFormatException();
         }
