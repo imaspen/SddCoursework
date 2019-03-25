@@ -3,7 +3,7 @@ package uk.zebington.cinemaenterpriso.controllers.admin.addon;
 import uk.zebington.cinemaenterpriso.controllers.admin.AdminTabController;
 import uk.zebington.cinemaenterpriso.entities.*;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
-import uk.zebington.cinemaenterpriso.modals.WarningModal;
+import uk.zebington.cinemaenterpriso.boundaries.modals.WarningModal;
 
 import java.util.ArrayList;
 

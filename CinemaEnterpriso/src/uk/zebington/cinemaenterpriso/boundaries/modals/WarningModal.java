@@ -1,4 +1,4 @@
-package uk.zebington.cinemaenterpriso.modals;
+package uk.zebington.cinemaenterpriso.boundaries.modals;
 
 import javafx.scene.control.Alert;
 

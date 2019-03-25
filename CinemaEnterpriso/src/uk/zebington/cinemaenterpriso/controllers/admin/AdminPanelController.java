@@ -6,7 +6,7 @@ import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.controllers.admin.addon.AdminAddOnTabController;
 import uk.zebington.cinemaenterpriso.controllers.admin.theater.AdminTheaterTabController;
 import uk.zebington.cinemaenterpriso.entities.singletons.Catalogue;
-import uk.zebington.cinemaenterpriso.modals.WarningModal;
+import uk.zebington.cinemaenterpriso.boundaries.modals.WarningModal;
 
 import java.util.ArrayList;
 

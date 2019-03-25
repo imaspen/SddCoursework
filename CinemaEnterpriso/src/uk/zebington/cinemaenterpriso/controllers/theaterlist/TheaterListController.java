@@ -2,19 +2,13 @@ package uk.zebington.cinemaenterpriso.controllers.theaterlist;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import uk.zebington.cinemaenterpriso.controllers.PageContainerController;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.controllers.admin.AdminPanelController;
 import uk.zebington.cinemaenterpriso.entities.Theater;
 import uk.zebington.cinemaenterpriso.entities.singletons.TheaterList;
-import uk.zebington.cinemaenterpriso.modals.PasswordModal;
+import uk.zebington.cinemaenterpriso.boundaries.modals.PasswordModal;
 
 import java.util.Collection;
 
