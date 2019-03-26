@@ -9,11 +9,10 @@ import uk.zebington.cinemaenterpriso.controllers.buyaddon.BuyAddOnController;
 import uk.zebington.cinemaenterpriso.controllers.checkout.CheckoutController;
 import uk.zebington.cinemaenterpriso.entities.AddOn;
 import uk.zebington.cinemaenterpriso.entities.Basket;
-import uk.zebington.cinemaenterpriso.entities.singletons.Catalogue;
-import uk.zebington.cinemaenterpriso.entities.Price;
 import uk.zebington.cinemaenterpriso.entities.Purchasable;
+import uk.zebington.cinemaenterpriso.entities.singletons.DrinksList;
+import uk.zebington.cinemaenterpriso.entities.singletons.SnacksList;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Consumer;
 
@@ -40,14 +39,14 @@ public class ViewBasketController extends PageController {
     @FXML
     public void addDrink() {
         PageContainerController.getInstance().loadNewPage(
-                new BuyAddOnController(Catalogue.getInstance().getDrinks(), new AddOnConsumer())
+                new BuyAddOnController(DrinksList.getInstance(), new AddOnConsumer())
         );
     }
 
     @FXML
     public void addSnack() {
         PageContainerController.getInstance().loadNewPage(
-                new BuyAddOnController(Catalogue.getInstance().getSnacks(), new AddOnConsumer())
+                new BuyAddOnController(SnacksList.getInstance(), new AddOnConsumer())
         );
     }
 

@@ -1,19 +1,14 @@
 package uk.zebington.cinemaenterpriso.entities;
 
-import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
+import java.io.Serializable;
 
-public class AddOn implements Purchasable {
+public class AddOn implements Purchasable, Serializable {
     private String name;
     private Price price;
 
     public AddOn(String name, Price price) {
         this.name = name;
         this.price = price;
-    }
-
-    public AddOn(String name, int price) throws NegativePriceException {
-        this.name = name;
-        this.price = new Price(price);
     }
 
     @Override

@@ -5,8 +5,9 @@ import javafx.scene.control.*;
 import uk.zebington.cinemaenterpriso.controllers.PageController;
 import uk.zebington.cinemaenterpriso.controllers.admin.addon.AdminAddOnTabController;
 import uk.zebington.cinemaenterpriso.controllers.admin.theater.AdminTheaterTabController;
-import uk.zebington.cinemaenterpriso.entities.singletons.Catalogue;
 import uk.zebington.cinemaenterpriso.boundaries.modals.WarningModal;
+import uk.zebington.cinemaenterpriso.entities.singletons.DrinksList;
+import uk.zebington.cinemaenterpriso.entities.singletons.SnacksList;
 
 import java.util.ArrayList;
 
@@ -31,11 +32,11 @@ public class AdminPanelController extends PageController {
         theaterTab.setContent(theaterTabController.getParent());
         tabControllers.add(theaterTabController);
 
-        AdminAddOnTabController foodTabController = new AdminAddOnTabController(Catalogue.getInstance().getSnacks());
+        AdminAddOnTabController foodTabController = new AdminAddOnTabController(SnacksList.getInstance());
         foodTab.setContent(foodTabController.getParent());
         tabControllers.add(foodTabController);
 
-        AdminAddOnTabController drinkTabController = new AdminAddOnTabController(Catalogue.getInstance().getDrinks());
+        AdminAddOnTabController drinkTabController = new AdminAddOnTabController(DrinksList.getInstance());
         drinkTab.setContent(drinkTabController.getParent());
         tabControllers.add(drinkTabController);
     }

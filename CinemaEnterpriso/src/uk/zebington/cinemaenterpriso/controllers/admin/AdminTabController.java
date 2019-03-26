@@ -42,6 +42,8 @@ public abstract class AdminTabController<T> extends Controller {
         this.elements.getSelectionModel().selectFirst();
         if (!elements.isEmpty()) {
             resetChanges();
+        } else {
+            setChangesMade(false);
         }
     }
 
