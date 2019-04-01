@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import uk.zebington.cinemaenterpriso.controllers.Controller;
-import uk.zebington.cinemaenterpriso.controllers.checkout.CheckoutController;
 import uk.zebington.cinemaenterpriso.entities.Price;
 import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 

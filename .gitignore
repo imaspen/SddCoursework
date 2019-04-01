@@ -1,4 +1,4 @@
-reated by https://www.gitignore.io/api/linux,windows,intellij+all
+# Created by https://www.gitignore.io/api/linux,windows,intellij+all
 # Edit at https://www.gitignore.io/?templates=linux,windows,intellij+all
 
 ### Intellij+all ###
@@ -128,3 +128,5 @@ $RECYCLE.BIN/
 *.vpp.bak*
 *.vpp~*
 *.lck
+
+CinemaEnterpriso/test/res/

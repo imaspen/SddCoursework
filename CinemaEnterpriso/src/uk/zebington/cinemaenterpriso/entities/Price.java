@@ -20,6 +20,22 @@ public class Price implements Serializable {
         this.amount = amount;
     }
 
+    public static Price fromString(String price) throws PriceFormatException, NegativePriceException {
+        if (price.contains("-")) throw new NegativePriceException();
+        Pattern pricePattern = Pattern.compile("^(?:£)?(?<pounds>[0-9,]+)?(?:\\.(?<pence>[0-9]{1,2}))?$");
+        Matcher priceMatcher = pricePattern.matcher(price);
+        if (priceMatcher.matches()) {
+            int amount = 0;
+            String pounds = priceMatcher.group("pounds");
+            String pence = priceMatcher.group("pence");
+            if (pounds != null) amount += Integer.parseInt(pounds) * 100;
+            if (pence != null) amount += Integer.parseInt(pence);
+            return new Price(amount);
+        } else {
+            throw new PriceFormatException();
+        }
+    }
+
     public Integer getAmount() {
         return amount;
     }
@@ -41,10 +57,6 @@ public class Price implements Serializable {
         return new Price(this.amount * amount);
     }
 
-    public Price minus(Integer amount) throws NegativePriceException {
-        return new Price(this.amount - amount);
-    }
-
     public Price minus(Price price) throws NegativePriceException {
         return new Price(this.amount - price.amount);
     }
@@ -58,20 +70,5 @@ public class Price implements Serializable {
     public boolean equals(Object obj) {
         if (!(obj instanceof Price)) return false;
         return amount.equals(((Price) obj).getAmount());
-    }
-
-    public static Price fromString(String price) throws PriceFormatException, NegativePriceException {
-        Pattern pricePattern = Pattern.compile("^(?:£)?(?<pounds>[0-9,]+)?(?:\\.(?<pence>[0-9]{1,2}))?$");
-        Matcher priceMatcher = pricePattern.matcher(price);
-        if (priceMatcher.matches()) {
-            int amount = 0;
-            String pounds = priceMatcher.group("pounds");
-            String pence = priceMatcher.group("pence");
-            if (pounds != null) amount += Integer.parseInt(pounds) * 100;
-            if (pence != null) amount += Integer.parseInt(pence);
-            return new Price(amount);
-        } else {
-            throw new PriceFormatException();
-        }
     }
 }
