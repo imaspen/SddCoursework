@@ -35,4 +35,22 @@ class TheaterTest {
         Assertions.assertEquals(theater1.getSeats() - 10, theater1.getTicketsAvailable());
         Assertions.assertEquals(theater2.getSeats() - 15, theater2.getTicketsAvailable());
     }
+
+    @Test
+    void equals() {
+        Assertions.assertEquals(theater1, theater1);
+        Assertions.assertEquals(theater2, theater2);
+        Assertions.assertNotEquals(theater1, theater2);
+        try {
+            Theater theater1Clone = new Theater("SJG/38",
+                    new Movie(
+                        "A Film", AgeRating.FIFTEEN, "A description", "A genre"
+                    ), 100, new Price(100)
+            );
+            Assertions.assertEquals(theater1, theater1Clone);
+        } catch (NegativePriceException e) {
+            Assertions.fail("Unexpected NegativePriceException");
+            e.printStackTrace();
+        }
+    }
 }
