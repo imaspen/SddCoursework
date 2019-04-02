@@ -8,6 +8,8 @@ import uk.zebington.cinemaenterpriso.exceptions.NegativePriceException;
 class TicketTest {
     private Movie movie1;
     private Movie movie2;
+    private Theater theater1;
+    private Theater theater2;
     private Price price1;
     private Price price2;
     private Ticket ticket1;
@@ -23,8 +25,24 @@ class TicketTest {
         } catch (NegativePriceException e) {
             e.printStackTrace();
         }
-        ticket1 = new Ticket(new Theater("SJG/38", movie1, 100, price1));
-        ticket2 = new Ticket(new Theater("BLG/11", movie2, 75, price2));
+        theater1 = new Theater("SJG/38", movie1, 100, price1);
+        theater2 = new Theater("BLG/11", movie2, 75, price2);
+        ticket1 = new Ticket(theater1);
+        ticket2 = new Ticket(theater2);
+    }
+
+    @Test
+    void getTheater() {
+        Assertions.assertEquals(theater1, ticket1.getTheater());
+        Assertions.assertEquals(theater2, ticket2.getTheater());
+    }
+
+    @Test
+    void setTheater() {
+        ticket1.setTheater(theater2);
+        ticket2.setTheater(theater1);
+        Assertions.assertEquals(theater2, ticket1.getTheater());
+        Assertions.assertEquals(theater1, ticket2.getTheater());
     }
 
     @Test
