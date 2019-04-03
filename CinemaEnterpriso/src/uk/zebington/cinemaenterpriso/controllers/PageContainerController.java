@@ -50,6 +50,7 @@ public class PageContainerController extends Controller {
 
     public void resetHistory() {
         history.clear();
+        backButton.setDisable(true);
     }
 
     @FXML

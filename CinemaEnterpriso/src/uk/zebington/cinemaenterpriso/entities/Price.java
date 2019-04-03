@@ -22,6 +22,7 @@ public class Price implements Serializable {
 
     public static Price fromString(String price) throws PriceFormatException, NegativePriceException {
         if (price.contains("-")) throw new NegativePriceException();
+        if (price.length() <= 0) throw new PriceFormatException();
         Pattern pricePattern = Pattern.compile("^(?:£)?(?<pounds>[0-9,]+)?(?:\\.(?<pence>[0-9]{1,2}))?$");
         Matcher priceMatcher = pricePattern.matcher(price);
         if (priceMatcher.matches()) {
