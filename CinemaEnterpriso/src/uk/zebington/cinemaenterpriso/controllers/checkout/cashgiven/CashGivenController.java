@@ -26,7 +26,7 @@ public class CashGivenController extends Controller {
     private Consumer<Boolean> paymentValid;
 
     public CashGivenController(Price target, Consumer<Boolean> paymentValid) {
-        super("checkout/cashgiven/cashGiven", 3);
+        super("checkout/cashgiven/cashGiven");
         this.target = target;
         this.paymentValid = paymentValid;
         try {

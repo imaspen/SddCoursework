@@ -5,10 +5,6 @@ public abstract class PageController extends Controller {
         super(fxmlName);
     }
 
-    public PageController(String fxmlName, Integer depth) {
-        super(fxmlName, depth);
-    }
-
     public boolean beforeBack() {return true;}
 
     public void onBack() {}

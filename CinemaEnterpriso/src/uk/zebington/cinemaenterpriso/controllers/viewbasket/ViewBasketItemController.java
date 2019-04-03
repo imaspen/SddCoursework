@@ -14,7 +14,7 @@ public class ViewBasketItemController extends Controller {
     private Purchasable purchasable;
 
     public ViewBasketItemController(Purchasable purchasable) {
-        super("viewbasket/viewBasketItem", 2);
+        super("viewbasket/viewBasketItem");
         setPurchasable(purchasable);
     }
 

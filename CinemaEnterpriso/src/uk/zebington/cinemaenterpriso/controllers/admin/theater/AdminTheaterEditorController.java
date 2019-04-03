@@ -31,7 +31,7 @@ public class AdminTheaterEditorController extends EditorController<Theater> {
     public TextArea movieDescription;
 
     AdminTheaterEditorController() {
-        super("admin/adminTheaterEditor", 3);
+        super("admin/adminTheaterEditor");
 
         movieRating.getItems().setAll(AgeRating.values());
 

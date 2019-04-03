@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import uk.zebington.cinemaenterpriso.CinemaEnterpriso;
 
 /**
  * @author Aspen Thompson
@@ -38,7 +39,7 @@ public class PasswordModal extends Stage {
         container.getChildren().addAll(inputBox, button);
 
         Scene scene = new Scene(container);
-        scene.getStylesheets().add(getClass().getResource("../../CinemaEnterpriso.css").toExternalForm());
+        scene.getStylesheets().add(CinemaEnterpriso.class.getResource("CinemaEnterpriso.css").toExternalForm());
         this.setScene(scene);
     }
 

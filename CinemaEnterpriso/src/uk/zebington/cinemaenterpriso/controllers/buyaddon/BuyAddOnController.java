@@ -20,7 +20,7 @@ public class BuyAddOnController extends PageController {
     private Consumer<Collection<AddOn>> consumer;
 
     public BuyAddOnController(Collection<AddOn> addOns, Consumer<Collection<AddOn>> consumer) {
-        super("buyaddon/buyAddOn", 2);
+        super("buyaddon/buyAddOn");
         ObservableList<Node> items = itemsContainer.getChildren();
         addOnControllers = new ArrayList<>();
         for (AddOn addOn : addOns) {

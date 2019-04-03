@@ -22,7 +22,7 @@ public class CashGivenItemController extends Controller {
     private CashGivenController parent;
 
     public CashGivenItemController(Price denomination, CashGivenController parent) {
-        super("checkout/cashgiven/cashGivenItem", 3);
+        super("checkout/cashgiven/cashGivenItem");
         this.denomination = denomination;
         this.parent = parent;
         denominationLabel.setText(denomination.toString());

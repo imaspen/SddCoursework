@@ -30,7 +30,7 @@ public abstract class AdminTabController<T> extends Controller {
     private EditorController<T> editorController;
 
     public AdminTabController(String fxmlName, Integer depth, Collection<T> elements, EditorController<T> editorController) {
-        super(fxmlName, depth);
+        super(fxmlName);
         editorController.setChangesMadeConsumer(changeMade -> {
             if (changeMade) setChangesMade(true);
         });

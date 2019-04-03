@@ -25,7 +25,7 @@ public class ViewBasketController extends PageController {
     private Basket basket;
 
     public ViewBasketController(Basket basket) {
-        super("viewbasket/viewBasket", 2);
+        super("viewbasket/viewBasket");
         this.basket = new Basket();
         basket.forEach(this::addBasketItem);
     }

@@ -36,7 +36,7 @@ public class CheckoutController extends PageController {
     private CashGivenController cashGiven;
 
     public CheckoutController(Basket basket) {
-        super("checkout/checkout", 2);
+        super("checkout/checkout");
         this.basket = basket;
 
         basketCost.setText(basket.getTotalCost().toString());

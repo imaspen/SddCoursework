@@ -16,7 +16,7 @@ public class BuyAddOnItemController extends Controller {
     private AddOn addOn;
 
     public BuyAddOnItemController(AddOn addOn) {
-        super("buyaddon/buyAddOnItem", 2);
+        super("buyaddon/buyAddOnItem");
         this.addOn = addOn;
         itemContainer.add(new ViewBasketItemController(addOn).getParent(), 0, 0);
     }

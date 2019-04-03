@@ -22,7 +22,7 @@ public class TheaterListController extends PageController {
     private boolean highlightNext;
 
     public TheaterListController() {
-        super("theaterlist/theaterList", 2);
+        super("theaterlist/theaterList");
         highlightNext = false;
         addTheatersToList(TheaterList.getInstance());
     }

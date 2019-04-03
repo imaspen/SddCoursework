@@ -25,7 +25,7 @@ public class AdminPanelController extends PageController {
     private ArrayList<AdminTabController> tabControllers;
 
     public AdminPanelController() {
-        super("admin/adminPanel", 2);
+        super("admin/adminPanel");
         tabControllers = new ArrayList<>();
 
         AdminTabController theaterTabController = new AdminTheaterTabController();

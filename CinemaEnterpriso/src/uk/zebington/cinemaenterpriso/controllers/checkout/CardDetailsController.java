@@ -26,7 +26,7 @@ public class CardDetailsController extends Controller {
     private Boolean cvcValid;
 
     public CardDetailsController(Consumer<Boolean> paymentValid) {
-        super("checkout/cardDetails", 2);
+        super("checkout/cardDetails");
         this.paymentValid = paymentValid;
         cardNumberValid = false;
         expiryValid = false;

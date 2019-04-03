@@ -16,7 +16,7 @@ public class MovieDetailsController extends PageController {
     public ImageView movieRating;
 
     public MovieDetailsController(Movie movie) {
-        super("theaterlist/movieDetails", 2);
+        super("theaterlist/movieDetails");
         this.movie = movie;
         this.movieDescription.setText(movie.getDescription());
         this.movieRating.setImage(new Image("/" + movie.getAgeRating().toString() + ".png"));

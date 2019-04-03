@@ -21,7 +21,7 @@ public class AdminAddOnEditorController extends EditorController<AddOn> {
     public TextField addOnPrice;
 
     AdminAddOnEditorController() {
-        super("admin/adminAddOnEditor", 3);
+        super("admin/adminAddOnEditor");
 
         this.addOnName.textProperty().addListener(o -> changeMade());
         this.addOnPrice.textProperty().addListener(o -> changeMade());

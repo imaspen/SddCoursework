@@ -31,7 +31,7 @@ public class TheaterListItemController extends Controller {
     public Spinner<Integer> ticketsAmountSelector;
 
     TheaterListItemController(Theater theater) {
-        super("theaterlist/theaterListItem", 2);
+        super("theaterlist/theaterListItem");
         this.theater = theater;
         Movie movie = this.theater.getShowingMovie();
         this.movieName.setText(movie.getTitle());

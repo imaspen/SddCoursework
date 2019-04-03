@@ -11,8 +11,8 @@ import java.util.function.Consumer;
 public abstract class EditorController<T> extends Controller {
     private Consumer<Boolean> changesMadeConsumer;
 
-    public EditorController(String fxmlName, Integer depth) {
-        super(fxmlName, depth);
+    public EditorController(String fxmlName) {
+        super(fxmlName);
     }
 
     public void setChangesMadeConsumer(Consumer<Boolean> changesMadeConsumer) {
